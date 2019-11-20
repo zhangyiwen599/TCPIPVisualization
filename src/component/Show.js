@@ -20,7 +20,7 @@ class Show extends Component {
                         {this.props.data.context}{this.props.data.isReady[1]}
                     </SubBlock>
                     <SubBlock divStyle={{ width: "20%" }}>
-                        {num}
+                        {this.props.data.tcpHeader}{this.props.data.isReady[1]}
                     </SubBlock>
                 </Block>
 

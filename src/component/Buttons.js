@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import GenHeaders from './GenHeaders'
 
-const ipSource
+const ipSource = "192.168.40.3";
+const ipDestination = "192.168.40.180";
+const portSource = 4000;
+const portDestination = 5000;
 
 class Buttons extends Component {
     constructor(props) {
@@ -20,6 +24,7 @@ class Buttons extends Component {
         //this.onClickHanler.bind(this);
         this.onClickHanler = this.onClickHanler.bind(this);
     }
+
 
 
     onClickHanler() {
@@ -78,6 +83,7 @@ class Buttons extends Component {
         else if (this.state.data.isReady[2] === 1) {
             // sender net
             temp.isReady[3] = 1;
+            temp.ipHeader = GenHeaders.ipHeader(portSource, portDestination);
             this.setState({
                 data: temp
             })
@@ -85,7 +91,7 @@ class Buttons extends Component {
         else if (this.state.data.isReady[1] === 1) {
             // sender trans
             temp.isReady[2] = 1;
-
+            temp.tcpHeader = GenHeaders.tcpHeader(ipSource, ipDestination);
             this.setState({
                 data: temp
             })
