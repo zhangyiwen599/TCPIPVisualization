@@ -1,0 +1,87 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+
+
+.block{ 
+  /* display: inline; */
+  position: absolute;
+  height: 50px;
+  width: 50%;
+  text-align: center;
+  line-height: 50px;
+  /* border: 1px solid #222; */
+}
+
+.subblock{
+    border-left: 1px solid #222;
+    border-right: 1px solid #222;
+    border-bottom: 1px solid #222;
+    border-top: 1px solid #222;
+    /* width: 100%; */
+    height: 100%;
+    float: right; 
+}
+
+#senderAppl{
+    left: 0px;
+    top: 50px;
+}
+
+#senderTran{
+    left: 0px;
+    top: 150px;
+}
+
+#senderNet{
+  left: 0px;
+  top: 250px;
+}
+
+#senderDataChain{
+  left: 0px;
+  top: 350px;
+}
+
+
+#reciverAppl{
+  left: 550px;
+  top: 50px;
+}
+
+#reciverTran{
+  left: 550px;
+  top: 150px;
+}
+
+#reciverNet{
+left: 550px;
+top: 250px;
+}
+
+#reciverDataChain{
+left: 550px;
+top: 350px;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
