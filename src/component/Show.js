@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import Block from './Block'
 import SubBlock from './SubBlock';
+import GenHeaders from './GenHeaders';
 
 const num = 124;
 
 class Show extends Component {
     render() {
+        GenHeaders.convertIP("192.168.40.3");
         return (
             <div>
 

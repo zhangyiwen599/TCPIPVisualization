@@ -25,8 +25,6 @@ class Buttons extends Component {
         this.onClickHanler = this.onClickHanler.bind(this);
     }
 
-
-
     onClickHanler() {
         this.props.fn(this.state.data);
 
