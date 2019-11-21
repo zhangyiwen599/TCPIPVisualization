@@ -7,7 +7,10 @@ const num = 124;
 
 class Show extends Component {
     render() {
-        GenHeaders.convertIP("192.168.40.3");
+        
+        // GenHeaders.ipHeader("192.168.40.3", "192.168.40.180", "Hewllo");
+        // GenHeaders.tcpHeader(4000, 5000, '',  "Hello", "192.168.40.3", "192.168.40.180");
+        // GenHeaders.udpHeader(4000, 5000, "Hello");
         return (
             <div>
 
