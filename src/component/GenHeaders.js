@@ -2,11 +2,21 @@
 class GenHeaders {
     static DefaultWindowSize = 17520;
     static tcpProtocolNum = 0x0006;
+    static macType = 0x0800;
 
-    static macHeader() {
+    static macHeader(macSource, macDestination) {
+        var temp = ''
+        temp += this.convertMac(macSource);
+        temp += this.convertMac(macDestination);
+        temp += this.macType.toString(16).padStart(4, '0');
+        // alert(this.macType.toString(16).padStart(4, '0'));
 
+        // alert(temp);
+        // alert(temp.length);
+
+        return temp;
     }
-
+    
     static ipHeader(ipSource, ipDestination, data) {
         var temp = '';
         temp += parseInt(4, 10).toString(16).padStart(1, '0');
@@ -31,12 +41,14 @@ class GenHeaders {
     }
 
     static tcpHeader(portSource, portDestination, RecvData, SendData, ipSource, ipDestination) {
+
         var temp = '';
         temp += parseInt(portSource, 10).toString(16).padStart(4, '0');
         temp += parseInt(portDestination, 10).toString(16).padStart(4, '0');
         temp += parseInt(SendData.length, 10).toString(16).padStart(8, '0');
         temp += parseInt(RecvData.length, 10).toString(16).padStart(8, '0');
         temp += parseInt(5, 10).toString(16).padStart(1, '0');
+        
         temp += '0'.repeat(1);
         temp += '1'             // 0001
         temp += '2'             // 0010
@@ -47,6 +59,7 @@ class GenHeaders {
         // alert(temp.length)
         // alert(this.checksum(ipSource, ipDestination, this.tcpProtocolNum, 20));
         // alert(temp);
+
         return temp;
     }
 
@@ -61,9 +74,21 @@ class GenHeaders {
         return temp;
     }
 
+    static convertMac(mac) {
+        var macSplit = mac.split(":", 6);
+        var temp = '';
+        for (let index = 0; index < macSplit.length; index++) {
+            const element = macSplit[index];
+            temp += element;
+        }
+        // alert(temp);
+        return temp;
+    }
+
     static convertIP(ip) {
         var ipSplit;
         ipSplit = ip.split('.', 4);
+        
         var temp = '';
         for (let index = 0; index < ipSplit.length; index++) {
             const element = ipSplit[index];
@@ -74,12 +99,14 @@ class GenHeaders {
     }
 
     static checksum(ipSource, ipDestination, protocolNum, length) {
+
         var temp = 0;
         temp += parseInt(this.convertIP(ipSource), 16);
+
         temp += parseInt(this.convertIP(ipDestination), 16);
         temp += protocolNum;
         temp += length;
-
+        
         var tempString = temp.toString(16);
         if (tempString.length <= 4)
             tempString.padStart(4, '0');

@@ -4,10 +4,6 @@ import Show from './component/Show';
 import Buttons from './component/Buttons';
 import styled, { keyframes } from 'styled-components';
 import { fadeIn } from 'react-animations';
-import SignInSide from './component/SignInSide';
-import MenuTabs from './component/MenuTabs'
-// import {Router,Route,Link} from 'react-router'
-
 
 const fadeInAnimation = keyframes`${fadeIn}`;
 const fDiv = styled.div`
@@ -20,13 +16,13 @@ class App extends Component {
     super();
     this.state = {
       data: {
-        context: 'hello',
-        isReady: [1,1,0,0,0,0,0,0,0],
-        senderTcpHeader: '192.23.34.55',
-        reciverTcpHeader: '122.45.66.42',
-        udpHeader: '12332',
-        ipHeader: '13123',
-        macHeader: 'dsdfs'
+        context: '',
+        isReady: Array(9),
+        senderTcpHeader: '',
+        reciverTcpHeader: '',
+        udpHeader: '',
+        ipHeader: '',
+        macHeader: ''
       },
       mytext: '',
     }
@@ -48,25 +44,22 @@ class App extends Component {
   render() {
     return (
       <div id="main" className="main">
-         {/* <div id="show" className="show">
+         <div id="show" className="show">
            <Show data={this.state.data}/>
-         </div> */}
+         </div>
 
 
-        {/* <div id="buttons" className="buttons">
+        <div id="buttons" className="buttons">
            <Buttons fn={this.getChildData} />
 
-         </div> */}
+         </div>
         {/* <div>
-          <SignInSide></SignInSide>    
-        </div> 
-       */}
-       <MenuTabs />
-      </div>
+            <fDiv><h1>Hello world</h1></fDiv>
+        </div>  */}
       
+      </div>
     );
   }
 }
-
 
 export default App;
