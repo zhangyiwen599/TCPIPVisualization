@@ -153,6 +153,46 @@ export default function Show(props) {
             </Grid>
 
 
+           
+                <Grid container xs={width} className={classes.config}>
+                
+                <Paper>
+                <Fade in={ready<5}> 
+                    <Table className={classes.table} size="small" aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Configure</TableCell>
+                                <TableCell align="right">Value</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            
+                            <Slide direction="down" in={ready<4} timeout={1000}>
+                            <TableRow >
+                                <TableCell component="th" scope="row">
+                                    {"ReciverPort"}
+                                </TableCell>
+                                <TableCell align="right">4001</TableCell>
+                            </TableRow>
+                            </Slide>
+
+                            <Slide direction="down" in={ready<3} timeout={1000}>
+                            <TableRow >
+                                <TableCell component="th" scope="row">
+                                    {"SenderPort"}
+                                </TableCell>
+                                <TableCell align="right">4000</TableCell>
+                            </TableRow>
+                            </Slide>
+
+                        </TableBody>
+                    </Table>
+                    </Fade>
+                </Paper>
+                
+            </Grid>
+            
+
 
             <Grid container xs={width} className={classes.config}>
                 <Paper>
@@ -185,9 +225,6 @@ export default function Show(props) {
                     </Table>
                 </Paper>
             </Grid>
-
-
-
 
 
         </div>
