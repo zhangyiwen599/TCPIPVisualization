@@ -37,14 +37,28 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function TCPButtons() {
+export default function TCPButtons(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: true,
+    SeqNum: 1,
+    ACKNum: 1,
+    DataOffset: 5,
+    NS: false,
+    CWR: false,
+    ECE: false,
+    URG: false,
+    ACK: true,
+    PSH: false,
+    RST: false,
+    SYN: false,
+    FIN: false,
+    WindowSize: 5,
+    UrgantPointer: 0
   });
+
   const handleChange = name => event => {
     setState({ ...state, [name]: event.target.checked });
+    props.sendData(state);
   };
 
 
@@ -60,6 +74,7 @@ export default function TCPButtons() {
             className={classes.textField}
             margin="normal"
             variant="outlined"
+            onChange={handleChange('SeqNum')}
           />
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -71,6 +86,7 @@ export default function TCPButtons() {
             className={classes.textField}
             margin="normal"
             variant="outlined"
+            onChange={handleChange('ACKNum')}
           />
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -82,15 +98,16 @@ export default function TCPButtons() {
             className={classes.textField}
             margin="normal"
             variant="outlined"
+            onChange={handleChange('DataOffset')}
           />
         </Grid>
         <Grid item xs={12} sm={2}>
           <FormControlLabel
             control={
               <Switch
-                checked={state.checkedA}
-                onChange={handleChange('checkedA')}
-                value="checkedA"
+                checked={state.NS}
+                onChange={handleChange('NS')}
+                value="NS"
                 color="primary" />
             }
             label="NS"
@@ -100,9 +117,9 @@ export default function TCPButtons() {
           <FormControlLabel
             control={
               <Switch
-                checked={state.checkedB}
-                onChange={handleChange('checkedB')}
-                value="checkedB"
+                checked={state.CWR}
+                onChange={handleChange('CWR')}
+                value="CWR"
                 color="primary"
               />
             }
@@ -113,9 +130,9 @@ export default function TCPButtons() {
           <FormControlLabel
             control={
               <Switch
-                checked={state.checkedC}
-                onChange={handleChange('checkedC')}
-                value="checkedC"
+                checked={state.ECE}
+                onChange={handleChange('ECE')}
+                value="ECE"
                 color="primary"
               />
             }
@@ -126,9 +143,9 @@ export default function TCPButtons() {
           <FormControlLabel
             control={
               <Switch
-                checked={state.checkedD}
-                onChange={handleChange('checkedD')}
-                value="checkedD"
+                checked={state.URG}
+                onChange={handleChange('URG')}
+                value="URG"
                 color="primary"
               />
             }
@@ -139,9 +156,9 @@ export default function TCPButtons() {
           <FormControlLabel
             control={
               <Switch
-                checked={state.checkedE}
-                onChange={handleChange('checkedE')}
-                value="checkedE"
+                checked={state.ACK}
+                onChange={handleChange('ACK')}
+                value="ACK"
                 color="primary"
               />
             }
@@ -152,9 +169,9 @@ export default function TCPButtons() {
           <FormControlLabel
             control={
               <Switch
-                checked={state.checkedF}
-                onChange={handleChange('checkedF')}
-                value="checkedF"
+                checked={state.PSH}
+                onChange={handleChange('PSH')}
+                value="PSH"
                 color="primary"
               />
             }
@@ -165,9 +182,9 @@ export default function TCPButtons() {
           <FormControlLabel
             control={
               <Switch
-                checked={state.checkedG}
-                onChange={handleChange('checkedG')}
-                value="checkedG"
+                checked={state.RST}
+                onChange={handleChange('RST')}
+                value="RST"
                 color="primary"
               />
             }
@@ -178,9 +195,9 @@ export default function TCPButtons() {
           <FormControlLabel
             control={
               <Switch
-                checked={state.checkedH}
-                onChange={handleChange('checkedH')}
-                value="checkedH"
+                checked={state.SYN}
+                onChange={handleChange('SYN')}
+                value="SYN"
                 color="primary"
               />
             }
@@ -191,9 +208,9 @@ export default function TCPButtons() {
           <FormControlLabel
             control={
               <Switch
-                checked={state.checkedI}
-                onChange={handleChange('checkedI')}
-                value="checkedI"
+                checked={state.FIN}
+                onChange={handleChange('FIN')}
+                value="FIN"
                 color="primary"
               />
             }
@@ -209,18 +226,20 @@ export default function TCPButtons() {
             className={classes.textField}
             margin="normal"
             variant="outlined"
-          />
+            onChange={handleChange('WindowSize')}
+            />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
             required
             id="outlined-required"
             label="Urgant pointer"
-            defaultValue="5"
+            defaultValue="0"
             className={classes.textField}
             margin="normal"
             variant="outlined"
-          />
+            onChange={handleChange('UrgantPointer')}
+            />
         </Grid>
       </Grid>
     </div>
