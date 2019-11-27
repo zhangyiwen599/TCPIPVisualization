@@ -22,6 +22,8 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import TCPModel from './TCPModel'
+import TCPTable from './TCPTable';
 const num = 124;
 
 
@@ -42,7 +44,7 @@ var useStyles = makeStyles(theme => ({
     },
     blank: {
         // padding: theme.spacing(2),
-        width: 100,
+        width: '900px',
         textAlign: "center",
         // borderWidth: 1,
         // borderBlockColor: 'black',
@@ -54,11 +56,11 @@ var useStyles = makeStyles(theme => ({
     senderAppl: {
 
         position: "absolute",
-        left: 200,
-        top: 500,
+        left: 0,
+        top: 350,
         // width:20,
         margin: 1,
-
+        zIndex: -100
     },
     myButton: {
         position: "absolute",
@@ -78,10 +80,10 @@ var useStyles = makeStyles(theme => ({
         top: 300,
         backgroundColor: '#0099CC'
     },
-    config:{
-        position:"absolute",
-        left:"600px",
-        top:"80px"
+    config: {
+        position: "absolute",
+        left: "1200px",
+        top: "50px"
     }
 
 }));
@@ -89,12 +91,29 @@ var useStyles = makeStyles(theme => ({
 export default function Show(props) {
     const classes = useStyles();
     const [ready, setReady] = React.useState(0);
+    const [tcpState,setTcpState] = React.useState(0);
     const clickHandler = () => {
         setReady(ready => ready + 1);
-    };
+        if(ready==1 && props.data.isTcp){
+            setReady(ready => 101);
+        }
+        else if (ready==2){
+            setReady(ready => 201)
+        }
+
+        if(ready==119){
+            setReady(ready=>300);
+        }
+    }
 
     const backHandler = () => {
         setReady(ready => ready - 1);
+        if(ready==300){
+            setReady(ready => 119)
+        }
+        if(ready == 101 || ready==201){
+            setReady(ready => 1);
+        }
     };
 
     const resetHandler = () => {
@@ -102,7 +121,7 @@ export default function Show(props) {
         props.fn();
     };
 
-    var width = 6;
+    var width = 11;
 
     return (
 
@@ -113,37 +132,22 @@ export default function Show(props) {
             <Button className={classes.myButton1} variant="contained" color="primary" onClick={resetHandler}>reset</Button>
 
 
-            <Grid container xs={width} className={classes.senderAppl} direction="row-reverse" >
+
+            {/* TCP/IP model */}
+            <Grid container xs={10} className={classes.senderAppl} direction="row-reverse" >
+
+                {/* context */}
                 <Fade in={ready >= 1}>
                     <Paper elevation="3" className={classes.paper}>
                         {props.data.context}{'hello'}
                     </Paper>
                 </Fade>
-                {ready < 5 ? <Fade in={ready >= 2} timeout={1000}>
-                    <Grid xs={width} container className={classes.blank} direction="row" >
-                        <Slide direction="up" in={ready >= 3} timeout={1000}>
-
-                            <Paper elevation="1" square>
-                                sendPort:
-                                    <br></br>
-                                4000
-                                </Paper>
-                        </Slide>
-                        <Slide direction="up" in={ready >= 4} timeout={1000}>
-                            <Paper elevation="1" square>
-                                ReciverPort:
-                                <br></br>
-                                4001
-                            </Paper>
-                        </Slide>
 
 
-                        {/* <MouseOverPopover color="#FFFFCC" data={props.data.isTcp?"Tcp Header":"Udp Header"} hoverData={props.data.isTcp?props.data.senderTcpHeader:props.data.udpHeader}></MouseOverPopover>       */}
-                    </Grid>
-                </Fade> : ""}
+                {props.data.isTcp?<TCPModel state={ready-100}></TCPModel>:{}}
 
 
-                <Fade in={ready >= 5} timeout={1000}>
+                <Fade in={ready >= 300} timeout={1000}>
                     <Paper elevation="3" className={classes.header} >
                         <MouseOverPopover color="#FFFFCC" data={props.data.isTcp ? "Tcp Header" : "Udp Header"} hoverData={props.data.isTcp ? props.data.senderTcpHeader : props.data.udpHeader}></MouseOverPopover>
                     </Paper>
@@ -153,78 +157,30 @@ export default function Show(props) {
             </Grid>
 
 
-           
-                <Grid container xs={width} className={classes.config}>
-                
-                <Paper>
-                <Fade in={ready<5}> 
-                    <Table className={classes.table} size="small" aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>Configure</TableCell>
-                                <TableCell align="right">Value</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            
-                            <Slide direction="down" in={ready<4} timeout={1000}>
-                            <TableRow >
-                                <TableCell component="th" scope="row">
-                                    {"ReciverPort"}
-                                </TableCell>
-                                <TableCell align="right">4001</TableCell>
-                            </TableRow>
-                            </Slide>
-
-                            <Slide direction="down" in={ready<3} timeout={1000}>
-                            <TableRow >
-                                <TableCell component="th" scope="row">
-                                    {"SenderPort"}
-                                </TableCell>
-                                <TableCell align="right">4000</TableCell>
-                            </TableRow>
-                            </Slide>
-
-                        </TableBody>
-                    </Table>
-                    </Fade>
-                </Paper>
-                
-            </Grid>
-            
 
 
+            {/* table */}
             <Grid container xs={width} className={classes.config}>
+
                 <Paper>
+
                     <Table className={classes.table} size="small" aria-label="simple table">
-                        <TableHead>
+                        {/* <TableHead>
                             <TableRow>
                                 <TableCell>Configure</TableCell>
                                 <TableCell align="right">Value</TableCell>
                             </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            <Slide direction="down" in={ready<3} timeout={1000}>
-                            <TableRow >
-                                <TableCell component="th" scope="row">
-                                    {"SenderPort"}
-                                </TableCell>
-                                <TableCell align="right">4000</TableCell>
-                            </TableRow>
-                            </Slide>
-
-                            <Slide direction="down" in={ready<4} timeout={1000}>
-                            <TableRow >
-                                <TableCell component="th" scope="row">
-                                    {"ReciverPort"}
-                                </TableCell>
-                                <TableCell align="right">4001</TableCell>
-                            </TableRow>
-                            </Slide>
-                        </TableBody>
+                        </TableHead> */}
+                        
+                        {props.data.isTcp?<TCPTable state={ready-100}></TCPTable>:{}}
+                        
                     </Table>
                 </Paper>
+
             </Grid>
+
+
+
 
 
         </div>

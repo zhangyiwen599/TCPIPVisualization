@@ -63,8 +63,8 @@ class App extends Component {
           <SignInSide></SignInSide>    
         </div> 
        */}
-        {/* <MenuTabs /> */}
-        <ExperimentalButton></ExperimentalButton>
+        <MenuTabs />
+        {/* <ExperimentalButton></ExperimentalButton> */}
         {/* <TCPButtons></TCPButtons> */}
       </div>
       
