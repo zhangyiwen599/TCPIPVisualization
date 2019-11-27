@@ -1,101 +1,228 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
+
 
 const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
   },
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     width: 200,
-    },
-    inputPos: {
-        width: "100%",
-        height: "80%",
-        position: "absolute",
-        top: "500%",
-        bottom: "0%",
-        left: "800px",
-        right: "0px"
+  },
+  root: {
+    flexGrow: 1,
+    position: "absolute",
+    top: "30%",
+    bottom: "0%"
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+  test: {
+    textAlign:'center',
   }
 }));
 
+
 export default function TCPButtons() {
   const classes = useStyles();
+  const [state, setState] = React.useState({
+    checkedA: true,
+    checkedB: true,
+  });
+  const handleChange = name => event => {
+    setState({ ...state, [name]: event.target.checked });
+  };
+
 
   return (
-    // <form className={classes.container} noValidate autoComplete="off">
-      <div className={classes.inputPos}>
-        <TextField
-          required
-          id="outlined-required"
-          label="Required"
-          defaultValue="Hello World"
-          className={classes.textField}
-          margin="normal"
-          variant="outlined"
-        />
-        <TextField
-          disabled
-          id="outlined-disabled"
-          label="Disabled"
-          defaultValue="Hello World"
-          className={classes.textField}
-          margin="normal"
-          variant="outlined"
-        />
-        <TextField
-          id="outlined-password-input"
-          label="Password"
-          className={classes.textField}
-          type="password"
-          autoComplete="current-password"
-          margin="normal"
-          variant="outlined"
-        />
-        <TextField
-          id="outlined-read-only-input"
-          label="Read Only"
-          defaultValue="Hello World"
-          className={classes.textField}
-          margin="normal"
-          InputProps={{
-            readOnly: true,
-          }}
-          variant="outlined"
-        />
-        <TextField
-          id="outlined-number"
-          label="Number"
-          type="number"
-          className={classes.textField}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          margin="normal"
-          variant="outlined"
-        />
-        <TextField
-          id="outlined-search"
-          label="Search field"
-          type="search"
-          className={classes.textField}
-          margin="normal"
-          variant="outlined"
-        />
-        <TextField
-          id="outlined-helperText"
-          label="Helper text"
-          defaultValue="Default Value"
-          className={classes.textField}
-          helperText="Some important text"
-          margin="normal"
-          variant="outlined"
-        />
-      </div>
-    // </form>
+    <div className={classes.root}>
+      <Grid container spacing={3} className={classes.test} direction="row"> 
+        <Grid item xs={12} sm={4} >
+          <TextField
+            required
+            id="outlined-required"
+            label="Seq Num"
+            defaultValue="1"
+            className={classes.textField}
+            margin="normal"
+            variant="outlined"
+          />
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <TextField
+            required
+            id="outlined-required"
+            label="ACK Num"
+            defaultValue="1"
+            className={classes.textField}
+            margin="normal"
+            variant="outlined"
+          />
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <TextField
+            required
+            id="outlined-required"
+            label="Data Offset"
+            defaultValue="5"
+            className={classes.textField}
+            margin="normal"
+            variant="outlined"
+          />
+        </Grid>
+        <Grid item xs={12} sm={2}>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={state.checkedA}
+                onChange={handleChange('checkedA')}
+                value="checkedA"
+                color="primary" />
+            }
+            label="NS"
+          />
+        </Grid>
+        <Grid item xs={12} sm={2}>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={state.checkedB}
+                onChange={handleChange('checkedB')}
+                value="checkedB"
+                color="primary"
+              />
+            }
+            label="CWR"
+          />
+        </Grid>
+        <Grid item xs={12} sm={2}>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={state.checkedC}
+                onChange={handleChange('checkedC')}
+                value="checkedC"
+                color="primary"
+              />
+            }
+            label="ECE"
+          />
+        </Grid>
+        <Grid item xs={12} sm={2}>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={state.checkedD}
+                onChange={handleChange('checkedD')}
+                value="checkedD"
+                color="primary"
+              />
+            }
+            label="URG"
+          />
+        </Grid>
+        <Grid item xs={12} sm={2}>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={state.checkedE}
+                onChange={handleChange('checkedE')}
+                value="checkedE"
+                color="primary"
+              />
+            }
+            label="ACK"
+          />
+        </Grid>
+        <Grid item xs={12} sm={2}>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={state.checkedF}
+                onChange={handleChange('checkedF')}
+                value="checkedF"
+                color="primary"
+              />
+            }
+            label="PSH"
+          />
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={state.checkedG}
+                onChange={handleChange('checkedG')}
+                value="checkedG"
+                color="primary"
+              />
+            }
+            label="RST"
+          />
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={state.checkedH}
+                onChange={handleChange('checkedH')}
+                value="checkedH"
+                color="primary"
+              />
+            }
+            label="SYN"
+          />
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={state.checkedI}
+                onChange={handleChange('checkedI')}
+                value="checkedI"
+                color="primary"
+              />
+            }
+            label="FIN"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="outlined-required"
+            label="Window Size"
+            defaultValue="5"
+            className={classes.textField}
+            margin="normal"
+            variant="outlined"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="outlined-required"
+            label="Urgant pointer"
+            defaultValue="5"
+            className={classes.textField}
+            margin="normal"
+            variant="outlined"
+          />
+        </Grid>
+      </Grid>
+    </div>
   );
 }
