@@ -14,118 +14,180 @@ import Button from '@material-ui/core/Button';
 import { Grid } from '@material-ui/core';
 import MouseOverPopover from './MouseOverPopover';
 import { border } from '@material-ui/system';
-
+import { read } from 'fs';
+import { ReactDOM } from 'react-dom';
+import Box from '@material-ui/core/Box';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 const num = 124;
 
 
-const useStyles = makeStyles(theme => ({
+var useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
     },
-    paper:{
+    paper: {
         padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
+
+
     },
-    header:{
-        padding:'0px',
-        margin:'0px'
+    header: {
+        padding: '0px',
+        margin: '0px'
     },
-    blank:{
+    blank: {
         // padding: theme.spacing(2),
-        width:100,
-        textAlign:"left",
-        border:1
+        width: 100,
+        textAlign: "center",
+        // borderWidth: 1,
+        // borderBlockColor: 'black',
+        backgroundColor: "yellow"
     },
-    headerContext:{
-        
+    headerContext: {
+
     },
     senderAppl: {
-        
-        position:"absolute",
-        left: 200 ,
-        top: 500 ,
+
+        position: "absolute",
+        left: 200,
+        top: 500,
         // width:20,
-        margin:1,
-       
+        margin: 1,
+
     },
-    myButton:{
-        position:"absolute",
-        left: 20 ,
-        top: 200 ,
-        backgroundColor :'#0099CC'
+    myButton: {
+        position: "absolute",
+        left: 20,
+        top: 200,
+        backgroundColor: '#0099CC'
     },
-    myButton1:{
+    myButton1: {
+        position: "absolute",
+        left: 20,
+        top: 250,
+        backgroundColor: '#0099CC'
+    },
+    myButton2: {
+        position: "absolute",
+        left: 20,
+        top: 300,
+        backgroundColor: '#0099CC'
+    },
+    config:{
         position:"absolute",
-        left: 20 ,
-        top: 250 ,
-        backgroundColor :'#0099CC'
+        left:"600px",
+        top:"80px"
     }
 
 }));
 
 export default function Show(props) {
     const classes = useStyles();
-    const [ready,setReady] = React.useState(0);
+    const [ready, setReady] = React.useState(0);
     const clickHandler = () => {
-        setReady(ready=>ready+1);
+        setReady(ready => ready + 1);
+    };
+
+    const backHandler = () => {
+        setReady(ready => ready - 1);
     };
 
     const resetHandler = () => {
-        setReady(ready=>0);
+        setReady(ready => 0);
         props.fn();
     };
 
     var width = 6;
-   
+
     return (
-        
-        <div>
+
+        <div >
 
             <Button className={classes.myButton} variant="contained" color="primary" onClick={clickHandler}>click</Button>
+            <Button className={classes.myButton2} variant="contained" color="primary" onClick={backHandler}>back</Button>
             <Button className={classes.myButton1} variant="contained" color="primary" onClick={resetHandler}>reset</Button>
 
-        
+
             <Grid container xs={width} className={classes.senderAppl} direction="row-reverse" >
                 <Fade in={ready >= 1}>
                     <Paper elevation="3" className={classes.paper}>
-                        {props.data.context}
+                        {props.data.context}{'hello'}
                     </Paper>
                 </Fade>
-                <Slide in={ready >= 2}>
-                    <Grid container xs={width} className={classes.blank} direction="row">      
-                            <Fade in={ready>=3} timeout={1000}>
-                                <Paper elevation='3' elevation="0">
-                                    haha
+                {ready < 5 ? <Fade in={ready >= 2} timeout={1000}>
+                    <Grid xs={width} container className={classes.blank} direction="row" >
+                        <Slide direction="up" in={ready >= 3} timeout={1000}>
+
+                            <Paper elevation="1" square>
+                                sendPort:
+                                    <br></br>
+                                4000
                                 </Paper>
-                            </Fade>
-                            <Fade in={ready>=4} timeout={1000}>
-                                <Paper elevation="3">
-                                    hehe
-                                </Paper>
-                            </Fade>
-                        
+                        </Slide>
+                        <Slide direction="up" in={ready >= 4} timeout={1000}>
+                            <Paper elevation="1" square>
+                                ReciverPort:
+                                <br></br>
+                                4001
+                            </Paper>
+                        </Slide>
+
+
                         {/* <MouseOverPopover color="#FFFFCC" data={props.data.isTcp?"Tcp Header":"Udp Header"} hoverData={props.data.isTcp?props.data.senderTcpHeader:props.data.udpHeader}></MouseOverPopover>       */}
                     </Grid>
-                </Slide>
-                
-                <Slide in={ready >= 20}>
-                    <Paper elevation="3" className={classes.header}>
-                    <MouseOverPopover color="#FFFFCC" data={props.data.isTcp?"Tcp Header":"Udp Header"} hoverData={props.data.isTcp?props.data.senderTcpHeader:props.data.udpHeader}></MouseOverPopover>      
+                </Fade> : ""}
+
+
+                <Fade in={ready >= 5} timeout={1000}>
+                    <Paper elevation="3" className={classes.header} >
+                        <MouseOverPopover color="#FFFFCC" data={props.data.isTcp ? "Tcp Header" : "Udp Header"} hoverData={props.data.isTcp ? props.data.senderTcpHeader : props.data.udpHeader}></MouseOverPopover>
                     </Paper>
-                </Slide>
+                </Fade>
+
+
             </Grid>
-           
 
-           
-            <Grid container xs={width} className={classes.senderApplConfig}>
+
+
+            <Grid container xs={width} className={classes.config}>
                 <Paper>
+                    <Table className={classes.table} size="small" aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Configure</TableCell>
+                                <TableCell align="right">Value</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            <Slide direction="down" in={ready<3} timeout={1000}>
+                            <TableRow >
+                                <TableCell component="th" scope="row">
+                                    {"SenderPort"}
+                                </TableCell>
+                                <TableCell align="right">4000</TableCell>
+                            </TableRow>
+                            </Slide>
 
+                            <Slide direction="down" in={ready<4} timeout={1000}>
+                            <TableRow >
+                                <TableCell component="th" scope="row">
+                                    {"ReciverPort"}
+                                </TableCell>
+                                <TableCell align="right">4001</TableCell>
+                            </TableRow>
+                            </Slide>
+                        </TableBody>
+                    </Table>
                 </Paper>
             </Grid>
-            
 
-          
+
+
 
 
         </div>
