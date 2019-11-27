@@ -7,6 +7,7 @@ import Buttons from './component/Buttons';
 // import SignInSide from './component/SignInSide';
 import MenuTabs from './component/MenuTabs'
 import ExperimentalButton from './component/ExperimentalButton';
+import TCPButtons from './component/TCPButtons';
 // import {Router,Route,Link} from 'react-router'
 
 
@@ -64,6 +65,7 @@ class App extends Component {
        */}
         {/* <MenuTabs /> */}
         <ExperimentalButton></ExperimentalButton>
+        {/* <TCPButtons></TCPButtons> */}
       </div>
       
     );
