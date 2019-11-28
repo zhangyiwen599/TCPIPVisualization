@@ -2,17 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 import Show from './component/Show';
 import Buttons from './component/Buttons';
-import styled, { keyframes } from 'styled-components';
-import { fadeIn } from 'react-animations';
+// import styled, { keyframes } from 'styled-components';
+// import { fadeIn } from 'react-animations';
 import SignInSide from './component/SignInSide';
 import MenuTabs from './component/MenuTabs'
+import GenHeaders from './component/GenHeaders';
 // import {Router,Route,Link} from 'react-router'
 
-
-const fadeInAnimation = keyframes`${fadeIn}`;
-const fDiv = styled.div`
-  animation: 1s ${fadeInAnimation};
-`;
 
 class App extends Component {
   constructor() {
@@ -46,6 +42,7 @@ class App extends Component {
   }
 
   render() {
+    // alert(GenHeaders.convertFourBits(1, 0, 0, 0));
     return (
       <div id="main" className="main">
          {/* <div id="show" className="show">
