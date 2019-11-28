@@ -4,11 +4,17 @@ import Show from './component/Show';
 import Buttons from './component/Buttons';
 // import styled, { keyframes } from 'styled-components';
 // import { fadeIn } from 'react-animations';
-import SignInSide from './component/SignInSide';
+// import SignInSide from './component/SignInSide';
 import MenuTabs from './component/MenuTabs'
-import GenHeaders from './component/GenHeaders';
+import ExperimentalButton from './component/ExperimentalButton';
+import TCPButtons from './component/TCPButtons';
 // import {Router,Route,Link} from 'react-router'
 
+
+// const fadeInAnimation = keyframes`${fadeIn}`;
+// const fDiv = styled.div`
+//   animation: 1s ${fadeInAnimation};
+// `;
 
 class App extends Component {
   constructor() {
@@ -58,7 +64,9 @@ class App extends Component {
           <SignInSide></SignInSide>    
         </div> 
        */}
-       <MenuTabs />
+        <MenuTabs />
+        {/* <ExperimentalButton></ExperimentalButton> */}
+        {/* <TCPButtons></TCPButtons> */}
       </div>
       
     );
