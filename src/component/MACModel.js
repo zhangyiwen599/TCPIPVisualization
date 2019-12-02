@@ -28,42 +28,36 @@ var useStyles = makeStyles(theme => ({
 }));
 
 
-export default function UDPModel(props){
+export default function MACModel(props){
     const classes = useStyles();
     //alert(props.state);
         return(
-            props.state < 6 ? <Fade in={props.state >= 1} timeout={1000}>
-                    <Grid xs="3" container className={classes.blank} direction="row" >
+            props.state < 5 ? <Fade in={props.state >= 1} timeout={1000}>
+                    <Grid xs="2" container className={classes.blank} direction="row" >
                         <Slide direction="up" in={props.state >= 2} timeout={1000}>
 
                             <Paper elevation="1" square>
-                                SrcPort:
+                                SrcMac:
                                     <br></br>
-                                {props.data.sourcePort}
+                                4000
                                 </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 3} timeout={1000}>
                             <Paper elevation="1" square>
-                                DestPort:
+                                DestMac:
                                 <br></br>
-                                {props.data.destPort}
+                                4001
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 4} timeout={1000}>
                             <Paper elevation="1" square>
-                                Length:
+                                Protocol:
                                 <br></br>
-                                {props.data.context.length}
+                                123
                             </Paper>
                         </Slide>
-                        <Slide direction="up" in={props.state >= 5} timeout={1000}>
-                            <Paper elevation="1" square>
-                                Checksum:
-                                <br></br>
-                                {/* {props.data.sourcePort} */}
-                            </Paper>
-                        </Slide>
-                        
+                      
+
                         {/* <MouseOverPopover color="#FFFFCC" data={props.data.isTcp?"Tcp Header":"Udp Header"} hoverData={props.data.isTcp?props.data.senderTcpHeader:props.data.udpHeader}></MouseOverPopover>       */}
                     </Grid>
                 </Fade> : <div></div>

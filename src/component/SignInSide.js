@@ -18,6 +18,7 @@ import CustomizedRadios from './CustomizedRadios';
 // import Link from 'react-router'
 // import Router from 'react-router'
 import GenHeaders from './GenHeaders'
+import zIndex from '@material-ui/core/styles/zIndex';
 
 
 
@@ -48,18 +49,31 @@ const useStyles = makeStyles(theme => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    backgroundColor :'#0099CC'
+    backgroundColor :'#0099CC',
+    zIndex:50
   },
   lowerInput:{
     position: "absolute",
     left:"400px",
     top:"300px",
+  },
+  header:{
+    position:"absolute",
+    left:"42%",
+    top:"60px"
   }
 
   
 }));
 
 var newData = {
+  sourceIp:"",
+  sourcePort:"",
+  sourceMac:"",
+  destIp:"",
+  destPort:"",
+  destMac:"",
+  context:"",
   senderTcpHeader:'',
   reciverTcpHeader:'',
   udpHeader:'',
@@ -98,9 +112,16 @@ export default function SignInSide(props) {
     newData.context = values.context;
     
     newData.needAdd = values.context.length<=5;
+    newData.sourceIp = values.sourceIp;
+    newData.sourcePort = values.sourcePort;
+    newData.sourceMac = values.sourceMac;
+    newData.destIp = values.destIp;
+    newData.destPort = values.destPort;
+    newData.destMac = values.destMac;
+  
   
     props.sendData(newData);
-    props.fn();
+    props.next();
   }
 
   const getRadioData = (data) =>{
@@ -109,10 +130,10 @@ export default function SignInSide(props) {
 
   return (
     <Grid container spacing={2} className={classes.root} direction="row">
-      <CssBaseline />
-      {/* <Typography component="h4" variant="h5">
-            Input configuration
-          </Typography> */}
+      {/* <CssBaseline /> */}
+      <Typography  variant="h5" className={classes.header}>
+            Basic configuration
+      </Typography>
       {/* <Grid item xs={false} sm={4} md={7} className={classes.image} /> */}
       <Grid container xs={6} component={Paper} elevation={0} square>
         <div className={classes.paper}>

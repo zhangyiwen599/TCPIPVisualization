@@ -13,6 +13,7 @@ import { red } from '@material-ui/core/colors';
 import SignInSide from './SignInSide';
 import Show from './Show'
 import Show_new from './Show_new'
+import ExperimentalButton from './ExperimentalButton';
 
 
 function TabPanel(props) {
@@ -58,19 +59,40 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
+
 var inputData = {
+    sourceIp:"",
+    sourcePort:"",
+    sourceMac:"",
+    destIp:"",
+    destPort:"",
+    destMac:"",
+    context:'',
     senderTcpHeader:'',
     reciverTcpHeader:'',
     udpHeader:'',
     ipHeader:'',
     macHeader:'',
-    context:'',
     isTcp:true,
-    needAdd:false
+    needAdd:false,
+    SeqNum: 1,
+    ACKNum: 1,
+    DataOffset: 5,
+    NS: 0,
+    CWR: 0,
+    ECE: 0,
+    URG: 0,
+    ACK: 1,
+    PSH: 0,
+    RST: 0,
+    SYN: 0,
+    FIN: 0,
+    WindowSize: 5,
+    UrgantPointer: 0
 }
 export default function MenuTabs() {
     const classes = useStyles();
-    const [value, setValue] = React.useState(2);
+    const [value, setValue] = React.useState(1);
     
 
     const handleChange = (event, newValue) => {
@@ -96,6 +118,7 @@ export default function MenuTabs() {
 
     const getChildData = (newData) => {
         inputData = newData;
+        // alert(inputData.ACK)
     }
 
   
@@ -117,22 +140,16 @@ export default function MenuTabs() {
                 <Button onClick={handleToInput}>Next to Input</Button> */}
             </TabPanel>
             <TabPanel value={value} index={1}>
-                {/* <TextField id='test' onChange={handleInput}>
-                </TextField>
-                <br></br> */}
-                <SignInSide fn={handleToOutput} sendData={getChildData}></SignInSide>
-                {/* <Button onClick={handleToOutput}>
-                    Submit
-                </Button> */}
+                
+                {/* <SignInSide fn={handleToOutput} sendData={getChildData}></SignInSide> */}
+                <ExperimentalButton toOutput={handleToOutput}  sendData={getChildData}></ExperimentalButton>
+
                 <br></br>
             </TabPanel>
             <TabPanel value={value} index={2}>
-                {/* Item Three
-                <br></br> */}
+                
                 <Show_new data={inputData} fn={handleToInput} ></Show_new>
-                {/* <Button variant="contained" onClick={handleToWelcome} >Back to Welcome</Button>
-                <br></br>
-                <Button onClick={handleToInput}>Back to Input</Button> */}
+                
             </TabPanel>
         </div>
     );

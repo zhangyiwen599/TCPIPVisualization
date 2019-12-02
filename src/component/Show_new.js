@@ -24,6 +24,12 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TCPModel from './TCPModel'
 import TCPTable from './TCPTable';
+import UDPModel from './UDPModel';
+import UDPTable from './UDPTable';
+import IPModel from './IPModel';
+import IPTable from './IPTable';
+import MACModel from './MACModel';
+import MACTable from './MACTable';
 const num = 124;
 
 
@@ -65,16 +71,22 @@ var useStyles = makeStyles(theme => ({
     myButton: {
         position: "absolute",
         left: 20,
-        top: 200,
+        top: 150,
         backgroundColor: '#0099CC'
     },
     myButton1: {
         position: "absolute",
         left: 20,
-        top: 250,
+        top: 200,
         backgroundColor: '#0099CC'
     },
     myButton2: {
+        position: "absolute",
+        left: 20,
+        top: 250,
+        backgroundColor: '#0099CC'
+    },
+    myButton3: {
         position: "absolute",
         left: 20,
         top: 300,
@@ -97,19 +109,25 @@ export default function Show(props) {
         if(ready==1 && props.data.isTcp){
             setReady(ready => 101);
         }
-        else if (ready==2){
+        else if (ready==1){
             setReady(ready => 201)
         }
 
         if(ready==119){
             setReady(ready=>300);
         }
+        else if(ready==205){
+            setReady(ready=>300)
+        }
     }
 
     const backHandler = () => {
         setReady(ready => ready - 1);
         if(ready==300){
-            setReady(ready => 119)
+            if(props.data.isTcp)
+                setReady(ready => 119)
+            else
+                setReady(ready => 205)
         }
         if(ready == 101 || ready==201){
             setReady(ready => 1);
@@ -121,30 +139,48 @@ export default function Show(props) {
         props.fn();
     };
 
+    const skipHandler =()=>{
+        if(ready>=301&&ready<314){
+            setReady(ready=>314);
+        }
+        else if(ready>=101&&ready<119){
+            setReady(ready=>119);
+        }
+        else if(ready>=201&&ready<205){
+            setReady(ready=>205);
+        }
+        else if(ready>=316&&ready<319){
+            setReady(ready=>319)
+        }
+
+    }
+
     var width = 11;
-
+    // alert(props.data.UrgantPointer)
     return (
-
+        
         <div >
 
             <Button className={classes.myButton} variant="contained" color="primary" onClick={clickHandler}>click</Button>
-            <Button className={classes.myButton2} variant="contained" color="primary" onClick={backHandler}>back</Button>
-            <Button className={classes.myButton1} variant="contained" color="primary" onClick={resetHandler}>reset</Button>
-
-
+            <Button className={classes.myButton1} variant="contained" color="primary" onClick={backHandler}>back</Button>
+            <Button className={classes.myButton2} variant="contained" color="primary" onClick={resetHandler}>reset</Button>
+            <Fade in={(ready>=101&&ready<119)||(ready>=201&&ready<205)||(ready>=301&&ready<314)||(ready>=316&&ready<319)}>
+            <Button className={classes.myButton3} variant="contained" color="primary" onClick={skipHandler}>skip</Button>
+            </Fade>
 
             {/* TCP/IP model */}
+            
             <Grid container xs={10} className={classes.senderAppl} direction="row-reverse" >
 
                 {/* context */}
                 <Fade in={ready >= 1}>
                     <Paper elevation="3" className={classes.paper}>
-                        {props.data.context}{'hello'}
+                        {props.data.context}
                     </Paper>
                 </Fade>
 
 
-                {props.data.isTcp?<TCPModel state={ready-100}></TCPModel>:{}}
+                {props.data.isTcp?<TCPModel data={props.data} state={ready-100}></TCPModel>:<UDPModel data={props.data} state={ready-200}></UDPModel>}
 
 
                 <Fade in={ready >= 300} timeout={1000}>
@@ -153,7 +189,21 @@ export default function Show(props) {
                     </Paper>
                 </Fade>
 
+                <IPModel  data={props.data} state={ready-300}></IPModel>
 
+                <Fade in={ready >= 315} timeout={1000}>
+                    <Paper elevation="3" className={classes.header} >
+                        <MouseOverPopover color="#FFFFCC" data="IP Header" hoverData={props.data.ipHeader}></MouseOverPopover>
+                    </Paper>
+                </Fade>
+
+                <MACModel data={props.data} state={ready-315}></MACModel>
+
+                {ready<321?<Fade in={ready == 320} timeout={1000}>
+                    <Paper elevation="3" className={classes.header} >
+                        <MouseOverPopover color="#FFFFCC" data="MAC Header" hoverData={props.data.macHeader}></MouseOverPopover>
+                    </Paper>
+                </Fade>:<div></div>}
             </Grid>
 
 
@@ -172,7 +222,7 @@ export default function Show(props) {
                             </TableRow>
                         </TableHead> */}
                         
-                        {props.data.isTcp?<TCPTable state={ready-100}></TCPTable>:{}}
+                        {ready<315?ready<300?props.data.isTcp?<TCPTable data={props.data} state={ready-100}></TCPTable>:<UDPTable data={props.data} state={ready-200}></UDPTable>:<IPTable  data={props.data} state={ready-300}></IPTable>:<MACTable data={props.data} state={ready-315}> </MACTable>}
                         
                     </Table>
                 </Paper>

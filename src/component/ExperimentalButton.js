@@ -8,29 +8,34 @@ import Typography from '@material-ui/core/Typography';
 import Box from "@material-ui/core/Box";
 import PropTypes from "prop-types"
 import TCPButtons from './TCPButtons'
+import SignInSide from './SignInSide';
+import Grid from '@material-ui/core/Grid';
+import Fade from '@material-ui/core/Fade';
 
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
     },
     button: {
-        marginRight: theme.spacing(1),
+       // marginRight: theme.spacing(1),
+        marginTop: theme.spacing(4)
     },
     instructions: {
         marginTop: theme.spacing(1),
         marginBottom: theme.spacing(1),
+        
+      
     },
     buttonPos: {
         height: "10%",
         position: "absolute",
-        top: "0%",
-        bottom: "90%",
-        left: "40%",
-        right: "40%"
+        top: "75%",
+        left: "45%",
+        zIndex:20
     },
     stepperPos: {
         // width: "98%",
-        height: "5%",
+        height: "50px",
         position: "absolute",
         top: "87%",
         bottom: "0%",
@@ -77,16 +82,57 @@ function getStepContent(step) {
     }
 }
 
+const data = {
+    sourceIp:"",
+    sourcePort:"",
+    sourceMac:"",
+    destIp:"",
+    destPort:"",
+    destMac:"",
+    context:'',
+    senderTcpHeader:'',
+    reciverTcpHeader:'',
+    udpHeader:'',
+    ipHeader:'',
+    macHeader:'',
+    isTcp:true,
+    needAdd:false,
+    SeqNum: 1,
+    ACKNum: 1,
+    DataOffset: 5,
+    NS: 0,
+    CWR: 0,
+    ECE: 0,
+    URG: 0,
+    ACK: 1,
+    PSH: 0,
+    RST: 0,
+    SYN: 0,
+    FIN: 0,
+    WindowSize: 5,
+    UrgantPointer: 0
+  };
+
 export default function ExperimentalButton(props) {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
+    
     const steps = getSteps();
 
     const handleNext = () => {
         if (activeStep === getSteps().length - 1)
         {
             // props.fn()
-            alert("Should Show");
+            props.sendData(data);
+            props.toOutput();
+            setActiveStep(prevActiveStep => 0);
+            // alert(data.ACK);
+            return;
+        }
+        else if(!data.isTcp){
+            props.sendData(data);
+            props.toOutput();
+            setActiveStep(prevActiveStep => 0);
             return;
         }
         setActiveStep(prevActiveStep => prevActiveStep + 1);
@@ -95,6 +141,42 @@ export default function ExperimentalButton(props) {
     const handleBack = () => {
         setActiveStep(prevActiveStep => prevActiveStep - 1);
     };
+
+    const getBasicData = (newData) => {
+        data.sourceIp=newData.sourceIp;
+        data.sourcePort=newData.sourcePort;
+        data.sourceMac = newData.sourceMac;
+        data.destIp = newData.destIp;
+        data.destPort = newData.destPort;
+        data.destMac = newData.destMac;
+
+        data.senderTcpHeader = newData.senderTcpHeader;
+        data.reciverTcpHeader = newData.reciverTcpHeader;
+        data.udpHeader = newData.udpHeader;
+        data.ipHeader = newData.ipHeader;
+        data.macHeader = newData.macHeader;
+        data.context = newData.context;
+        data.isTcp = newData.isTcp;
+        data.needAdd = newData.needAdd;
+    }
+
+    const getTcpData = (newData) =>{
+        data.SeqNum = newData.SeqNum;
+        data.ACKNum= newData.ACKNum;
+        data.DataOffset= newData.DataOffset;
+        data.NS= newData.NS;
+        data.CWR= newData.CWR;
+        data.ECE= newData.ECE;
+        data.URG= newData.URG;
+        data.ACK= newData.ACK;
+        data.PSH= newData.PSH;
+        data.RST= newData.RST;
+        data.SYN= newData.SYN;
+        data.FIN= newData.FIN;
+        data.WindowSize= newData.WindowSize;
+        data.UrgantPointer= newData.UrgantPointer;
+        //alert(data.ACK);
+    }
 
     return (
         <div className={classes.root}>
@@ -110,9 +192,13 @@ export default function ExperimentalButton(props) {
                 })}
             </Stepper>
 
-            <div className={classes.buttonPos}>
-                <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
-                <div>
+            <Grid className={classes.buttonPos}>
+                {/* <Typography className={classes.instructions}>
+                    {getStepContent(activeStep)}
+                </Typography> */}
+                
+                <Fade in={activeStep!=0}>
+                <Grid>
                     <Button
                         disabled={activeStep === 0}
                         onClick={handleBack}
@@ -128,14 +214,16 @@ export default function ExperimentalButton(props) {
                     >
                         {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                     </Button>
-                </div>
-            </div>
+                </Grid>
+                </Fade>
+               
+            </Grid>
 
             <Panel value={activeStep} index={0}>
-                <h1>0000</h1>
+                <SignInSide sendData={getBasicData} next = {handleNext}></SignInSide>
             </Panel>
             <Panel value={activeStep} index={1}>
-                <TCPButtons></TCPButtons>
+                <TCPButtons sendData={getTcpData}></TCPButtons>
             </Panel>
         </div>
     );

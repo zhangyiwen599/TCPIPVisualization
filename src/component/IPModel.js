@@ -28,140 +28,106 @@ var useStyles = makeStyles(theme => ({
 }));
 
 
-export default function TCPModel(props){
+export default function IPModel(props){
     const classes = useStyles();
     //alert(props.state);
         return(
-            props.state < 20 ? <Fade in={props.state >= 1} timeout={1000}>
-                    <Grid xs="11" container className={classes.blank} direction="row" >
+            props.state < 15 ? <Fade in={props.state >= 1} timeout={1000}>
+                    <Grid xs="10" container className={classes.blank} direction="row" >
                         <Slide direction="up" in={props.state >= 2} timeout={1000}>
 
                             <Paper elevation="1" square>
-                                SrcPort:
+                                Version:
                                     <br></br>
-                                {props.data.sourcePort}
+                            
                                 </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 3} timeout={1000}>
                             <Paper elevation="1" square>
-                                DestPort:
+                                IHL:
                                 <br></br>
-                                {props.data.destPort}
+                                4001
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 4} timeout={1000}>
                             <Paper elevation="1" square>
-                                Seq Num:
+                                DSCP:
                                 <br></br>
-                                {props.data.SeqNum}
+                                123
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 5} timeout={1000}>
                             <Paper elevation="1" square>
-                                ACK Num:
+                                ECN:
                                 <br></br>
-                                {props.data.ACKNum}
+                                123
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 6} timeout={1000}>
                             <Paper elevation="1" square>
-                                Data offset:
+                                Total Len:
                                 <br></br>
-                                {props.data.DataOffset}
+                                99
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 7} timeout={1000}>
                             <Paper elevation="1" square>
-                                Reserved:
+                                Identification:
                                 <br></br>
                                 000
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 8} timeout={1000}>
                             <Paper elevation="1" square>
-                                NS:
+                                Flags:
                                 <br></br>
-                                {props.data.NS}
+                                0
                             </Paper>
                         </Slide>
 
                         <Slide direction="up" in={props.state >= 9} timeout={1000}>
                             <Paper elevation="1" square>
-                                CWR:
+                                Fragment Offset:
                                 <br></br>
-                                {props.data.CWR}
+                                1
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 10} timeout={1000}>
                             <Paper elevation="1" square>
-                                ECE:
+                                Time To Live:
                                 <br></br>
-                                {props.data.ECE}
+                                0
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 11} timeout={1000}>
                             <Paper elevation="1" square>
-                                URG:
+                                Protocol:
                                 <br></br>
-                                {props.data.URG}
+                                1
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 12} timeout={1000}>
                             <Paper elevation="1" square>
-                                ACK:
+                                Header Checksum:
                                 <br></br>
-                                {props.data.ACK}
+                                0
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 13} timeout={1000}>
                             <Paper elevation="1" square>
-                                PSH:
+                                SrcIP:
                                 <br></br>
-                                {props.data.PSH}
+                                1
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 14} timeout={1000}>
                             <Paper elevation="1" square>
-                                RST:
+                                DestIP:
                                 <br></br>
-                                {props.data.RST}
+                                1
                             </Paper>
                         </Slide>
-                        <Slide direction="up" in={props.state >= 15} timeout={1000}>
-                            <Paper elevation="1" square>
-                                SYN:
-                                <br></br>
-                                {props.data.SYN}
-                            </Paper>
-                        </Slide>
-                        <Slide direction="up" in={props.state >= 16} timeout={1000}>
-                            <Paper elevation="1" square>
-                                FIN:
-                                <br></br>
-                                {props.data.FIN}
-                            </Paper>
-                        </Slide>
-                        <Slide direction="up" in={props.state >= 17} timeout={1000}>
-                            <Paper elevation="1" square>
-                                Windows Size:
-                                <br></br>
-                                {props.data.WindowSize}
-                            </Paper>
-                        </Slide>
-                        <Slide direction="up" in={props.state >= 18} timeout={1000}>
-                            <Paper elevation="1" square>
-                                Checksum:
-                                <br></br>
-                                Checksum
-                            </Paper>
-                        </Slide>
-                        <Slide direction="up" in={props.state >= 19} timeout={1000}>
-                            <Paper elevation="1" square>
-                                Urgent pointer:
-                                <br></br>
-                                {props.data.UrgantPointer}
-                            </Paper>
-                        </Slide>
+                        
 
                         {/* <MouseOverPopover color="#FFFFCC" data={props.data.isTcp?"Tcp Header":"Udp Header"} hoverData={props.data.isTcp?props.data.senderTcpHeader:props.data.udpHeader}></MouseOverPopover>       */}
                     </Grid>

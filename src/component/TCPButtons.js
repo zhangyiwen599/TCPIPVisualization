@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -33,6 +33,11 @@ const useStyles = makeStyles(theme => ({
   },
   test: {
     textAlign:'center',
+  },
+  header:{
+    position:"absolute",
+    left:"42%",
+    top:"60px"
   }
 }));
 
@@ -43,15 +48,15 @@ export default function TCPButtons(props) {
     SeqNum: 1,
     ACKNum: 1,
     DataOffset: 5,
-    NS: false,
-    CWR: false,
-    ECE: false,
-    URG: false,
-    ACK: true,
-    PSH: false,
-    RST: false,
-    SYN: false,
-    FIN: false,
+    NS: 0,
+    CWR: 0,
+    ECE: 0,
+    URG: 0,
+    ACK: 1,
+    PSH: 0,
+    RST: 0,
+    SYN: 0,
+    FIN: 0,
     WindowSize: 5,
     UrgantPointer: 0
   });
@@ -63,8 +68,15 @@ export default function TCPButtons(props) {
 
 
   return (
-    <div className={classes.root}>
-      <Grid container spacing={3} className={classes.test} direction="row"> 
+    <div>
+      <Typography  variant="h5" className={classes.header}>
+            TCP configuration
+      </Typography>
+    
+    <Grid className={classes.root}>
+      
+      <Grid container spacing={1} className={classes.test} direction="row"> 
+      
         <Grid item xs={12} sm={4} >
           <TextField
             required
@@ -242,6 +254,8 @@ export default function TCPButtons(props) {
             />
         </Grid>
       </Grid>
+    </Grid>
+ 
     </div>
   );
 }

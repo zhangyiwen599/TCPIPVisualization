@@ -10,120 +10,79 @@ import TableRow from '@material-ui/core/TableRow';
 
 
 
-export default function TCPTable(props) {
+export default function IPTable(props) {
 
 
 
     return (
         <TableBody>
-        <Slide direction="down" in={props.state < 19} timeout={1000}>
-            <TableRow >
-                <TableCell component="th" scope="row">
-                    {"Urgent pointer"}
-                </TableCell>
-                <TableCell align="right">{props.data.UrgantPointer}</TableCell>
-            </TableRow>
-        </Slide>
-        <Slide direction="down" in={props.state < 18} timeout={1000}>
-            <TableRow >
-                <TableCell component="th" scope="row">
-                    {"Checksum"}
-                </TableCell>
-                <TableCell align="right">{props.data.Checksum}</TableCell>
-            </TableRow>
-        </Slide>
-
-        <Slide direction="down" in={props.state < 17} timeout={1000}>
-            <TableRow >
-                <TableCell component="th" scope="row">
-                    {"Window Size"}
-                </TableCell>
-                <TableCell align="right">{props.data.WindowSize}</TableCell>
-            </TableRow>
-        </Slide>
-        <Slide direction="down" in={props.state < 16} timeout={1000}>
-            <TableRow >
-                <TableCell component="th" scope="row">
-                    {"FIN"}
-                </TableCell>
-                <TableCell align="right">{props.data.FIN}</TableCell>
-            </TableRow>
-        </Slide>
-
-        <Slide direction="down" in={props.state < 15} timeout={1000}>
-            <TableRow >
-                <TableCell component="th" scope="row">
-                    {"SYN"}
-                </TableCell>
-                <TableCell align="right">{props.data.SYN}</TableCell>
-            </TableRow>
-        </Slide>
+      
         <Slide direction="down" in={props.state < 14} timeout={1000}>
             <TableRow >
                 <TableCell component="th" scope="row">
-                    {"RST"}
+                    {"DestIP"}
                 </TableCell>
-                <TableCell align="right">{props.data.RST}</TableCell>
+                <TableCell align="right">1</TableCell>
             </TableRow>
         </Slide>
 
         <Slide direction="down" in={props.state < 13} timeout={1000}>
             <TableRow >
                 <TableCell component="th" scope="row">
-                    {"PSH"}
+                    {"SrcIP"}
                 </TableCell>
-                <TableCell align="right">{props.data.PSH}</TableCell>
+                <TableCell align="right">0</TableCell>
             </TableRow>
         </Slide>
 
         <Slide direction="down" in={props.state < 12} timeout={1000}>
             <TableRow >
                 <TableCell component="th" scope="row">
-                    {"ACK"}
+                    {"Header Checksum"}
                 </TableCell>
-                <TableCell align="right">{props.data.ACK}</TableCell>
+                <TableCell align="right">1</TableCell>
             </TableRow>
         </Slide>
 
         <Slide direction="down" in={props.state < 11} timeout={1000}>
             <TableRow >
                 <TableCell component="th" scope="row">
-                    {"URG"}
+                    {"Protocol"}
                 </TableCell>
-                <TableCell align="right">{props.data.URG}</TableCell>
+                <TableCell align="right">000</TableCell>
             </TableRow>
         </Slide>
 
         <Slide direction="down" in={props.state < 10} timeout={1000}>
             <TableRow >
                 <TableCell component="th" scope="row">
-                    {"ECE"}
+                    {"Time To Live"}
                 </TableCell>
-                <TableCell align="right">{props.data.ECE}</TableCell>
+                <TableCell align="right">0</TableCell>
             </TableRow>
         </Slide>
 
         <Slide direction="down" in={props.state < 9} timeout={1000}>
             <TableRow >
                 <TableCell component="th" scope="row">
-                    {"CWR"}
+                    {"Fragment Offset"}
                 </TableCell>
-                <TableCell align="right">{props.data.CWR}</TableCell>
+                <TableCell align="right">1</TableCell>
             </TableRow>
         </Slide>
 
         <Slide direction="down" in={props.state < 8} timeout={1000}>
             <TableRow >
                 <TableCell component="th" scope="row">
-                    {"NS"}
+                    {"Flags"}
                 </TableCell>
-                <TableCell align="right">{props.data.NS}</TableCell>
+                <TableCell align="right">0</TableCell>
             </TableRow>
         </Slide>
         <Slide direction="down" in={props.state < 7} timeout={1000}>
             <TableRow >
                 <TableCell component="th" scope="row">
-                    {"Reserved"}
+                    {"Identification"}
                 </TableCell>
                 <TableCell align="right">000</TableCell>
             </TableRow>
@@ -132,45 +91,45 @@ export default function TCPTable(props) {
         <Slide direction="down" in={props.state < 6} timeout={1000}>
             <TableRow >
                 <TableCell component="th" scope="row">
-                    {"Data offset"}
+                    {"Tatol Len"}
                 </TableCell>
-                <TableCell align="right">{props.data.DataOffset}</TableCell>
+                <TableCell align="right">99</TableCell>
             </TableRow>
         </Slide>
 
         <Slide direction="down" in={props.state < 5} timeout={1000}>
             <TableRow >
                 <TableCell component="th" scope="row">
-                    {"ACK num"}
+                    {"ECN"}
                 </TableCell>
-                <TableCell align="right">{props.data.ACKNum}</TableCell>
+                <TableCell align="right">89</TableCell>
             </TableRow>
         </Slide>
 
         <Slide direction="down" in={props.state < 4} timeout={1000}>
             <TableRow >
                 <TableCell component="th" scope="row">
-                    {"Sequence num"}
+                    {"DSCP"}
                 </TableCell>
-                <TableCell align="right">{props.data.SeqNum}</TableCell>
+                <TableCell align="right">123</TableCell>
             </TableRow>
         </Slide>
 
         <Slide direction="down" in={props.state < 3} timeout={1000}>
             <TableRow >
                 <TableCell component="th" scope="row">
-                    {"DestPort"}
+                    {"IHL"}
                 </TableCell>
-                <TableCell align="right">{props.data.destPort}</TableCell>
+                <TableCell align="right">4001</TableCell>
             </TableRow>
         </Slide>
 
         <Slide direction="down" in={props.state < 2} timeout={1000}>
             <TableRow >
                 <TableCell component="th" scope="row">
-                    {"SrcPort"}
+                    {"Version"}
                 </TableCell>
-                <TableCell align="right">{props.data.sourcePort}</TableCell>
+                <TableCell align="right">4000</TableCell>
             </TableRow>
         </Slide>
         </TableBody>
