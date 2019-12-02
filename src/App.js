@@ -48,6 +48,7 @@ class App extends Component {
   }
 
   render() {
+    // alert(GenHeaders.convertFourBits(1, 0, 0, 0));
     return (
       <div id="main" className="main">
          {/* <div id="show" className="show">
