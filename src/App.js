@@ -8,6 +8,7 @@ import Buttons from './component/Buttons';
 import MenuTabs from './component/MenuTabs'
 import ExperimentalButton from './component/ExperimentalButton';
 import TCPButtons from './component/TCPButtons';
+import IPButtons from './component/IPButtons';
 // import {Router,Route,Link} from 'react-router'
 
 
@@ -65,8 +66,10 @@ class App extends Component {
         </div> 
        */}
         <MenuTabs />
+        
         {/* <ExperimentalButton></ExperimentalButton> */}
         {/* <TCPButtons></TCPButtons> */}
+        {/* <IPButtons></IPButtons> */}
       </div>
       
     );
