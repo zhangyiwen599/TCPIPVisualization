@@ -19,9 +19,9 @@ var useStyles = makeStyles(theme => ({
         margin: '0px'
     },
     blank: {
-        width: '900px',
+        backgroundColor:"#cbf5fb",
         textAlign: "center",
-          backgroundColor: "yellow"
+    
     },
 
 
@@ -38,20 +38,26 @@ export default function TCPModel(props){
 
                             <Paper elevation="1" square>
                                 SrcPort:
-                                    <br></br>
+                                <br></br>  
+                                16 bit
+                                <br></br>  
                                 {props.data.sourcePort}
                                 </Paper>
                         </Slide>
-                        <Slide direction="up" in={props.state >= 3} timeout={1000}>
+                        <Slide direction="up"   in={props.state >= 3} timeout={1000}>
                             <Paper elevation="1" square>
                                 DestPort:
+                                <br></br>
+                                16 bit
                                 <br></br>
                                 {props.data.destPort}
                             </Paper>
                         </Slide>
-                        <Slide direction="up" in={props.state >= 4} timeout={1000}>
+                        <Slide direction="up"  in={props.state >= 4} timeout={1000}>
                             <Paper elevation="1" square>
                                 Seq Num:
+                                <br></br>
+                                32 bit
                                 <br></br>
                                 {props.data.SeqNum}
                             </Paper>
@@ -60,12 +66,16 @@ export default function TCPModel(props){
                             <Paper elevation="1" square>
                                 ACK Num:
                                 <br></br>
+                                32 bit
+                                <br></br>
                                 {props.data.ACKNum}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 6} timeout={1000}>
                             <Paper elevation="1" square>
                                 Data offset:
+                                <br></br>
+                                4 bit
                                 <br></br>
                                 {props.data.DataOffset}
                             </Paper>
@@ -74,6 +84,8 @@ export default function TCPModel(props){
                             <Paper elevation="1" square>
                                 Reserved:
                                 <br></br>
+                                3 bit
+                                <br></br>
                                 000
                             </Paper>
                         </Slide>
@@ -81,13 +93,16 @@ export default function TCPModel(props){
                             <Paper elevation="1" square>
                                 NS:
                                 <br></br>
+                                1 bit
+                                <br></br>
                                 {props.data.NS}
                             </Paper>
                         </Slide>
-
                         <Slide direction="up" in={props.state >= 9} timeout={1000}>
                             <Paper elevation="1" square>
                                 CWR:
+                                <br></br>
+                                1 bit
                                 <br></br>
                                 {props.data.CWR}
                             </Paper>
@@ -96,12 +111,16 @@ export default function TCPModel(props){
                             <Paper elevation="1" square>
                                 ECE:
                                 <br></br>
+                                1 bit
+                                <br></br>
                                 {props.data.ECE}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 11} timeout={1000}>
                             <Paper elevation="1" square>
                                 URG:
+                                <br></br>
+                                1 bit
                                 <br></br>
                                 {props.data.URG}
                             </Paper>
@@ -110,12 +129,16 @@ export default function TCPModel(props){
                             <Paper elevation="1" square>
                                 ACK:
                                 <br></br>
+                                1 bit
+                                <br></br>
                                 {props.data.ACK}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 13} timeout={1000}>
                             <Paper elevation="1" square>
                                 PSH:
+                                <br></br>
+                                1 bit
                                 <br></br>
                                 {props.data.PSH}
                             </Paper>
@@ -124,12 +147,16 @@ export default function TCPModel(props){
                             <Paper elevation="1" square>
                                 RST:
                                 <br></br>
+                                1 bit
+                                <br></br>
                                 {props.data.RST}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 15} timeout={1000}>
                             <Paper elevation="1" square>
                                 SYN:
+                                <br></br>
+                                1 bit
                                 <br></br>
                                 {props.data.SYN}
                             </Paper>
@@ -138,12 +165,16 @@ export default function TCPModel(props){
                             <Paper elevation="1" square>
                                 FIN:
                                 <br></br>
+                                1 bit
+                                <br></br>
                                 {props.data.FIN}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 17} timeout={1000}>
                             <Paper elevation="1" square>
                                 Windows Size:
+                                <br></br>
+                                16 bit
                                 <br></br>
                                 {props.data.WindowSize}
                             </Paper>
@@ -152,12 +183,16 @@ export default function TCPModel(props){
                             <Paper elevation="1" square>
                                 Checksum:
                                 <br></br>
+                                16 bit
+                                <br></br>
                                 Checksum
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 19} timeout={1000}>
                             <Paper elevation="1" square>
                                 Urgent pointer:
+                                <br></br>
+                                16 bit
                                 <br></br>
                                 {props.data.UrgantPointer}
                             </Paper>

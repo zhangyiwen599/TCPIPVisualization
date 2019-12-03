@@ -104,14 +104,14 @@ export default function SignInSide(props) {
   
  
   const handleClick = () =>{
-    newData.senderTcpHeader = GenHeaders.tcpHeader(values.sourcePort,values.destPort,'',values.context,values.sourceIp,values.destIp);
-    newData.reciverTcpHeader = GenHeaders.tcpHeader(values.sourcePort,values.destPort,values.context,'',values.sourceIp,values.destIp);
-    newData.udpHeader = GenHeaders.udpHeader(values.sourcePort,values.destPort,values.context);
-    newData.ipHeader = GenHeaders.ipHeader(values.sourceIp,values.destIp,values.context);
-    newData.macHeader = GenHeaders.macHeader(values.sourceMac,values.destMac);
+    // newData.senderTcpHeader = GenHeaders.tcpHeader(values.sourcePort,values.destPort,'',values.context,values.sourceIp,values.destIp);
+    // newData.reciverTcpHeader = GenHeaders.tcpHeader(values.sourcePort,values.destPort,values.context,'',values.sourceIp,values.destIp);
+    // newData.udpHeader = GenHeaders.udpHeader(values.sourcePort,values.destPort,values.context);
+    // newData.ipHeader = GenHeaders.ipHeader(values.sourceIp,values.destIp,values.context);
+    // newData.macHeader = GenHeaders.macHeader(values.sourceMac,values.destMac);
     newData.context = values.context;
     
-    newData.needAdd = values.context.length<=5;
+    newData.needAdd = (values.context.length<=5&&newData.isTcp) || (!newData.isTcp&&values.context.length<=17);
     newData.sourceIp = values.sourceIp;
     newData.sourcePort = values.sourcePort;
     newData.sourceMac = values.sourceMac;
@@ -135,7 +135,7 @@ export default function SignInSide(props) {
             Basic configuration
       </Typography>
       {/* <Grid item xs={false} sm={4} md={7} className={classes.image} /> */}
-      <Grid container xs={6} component={Paper} elevation={0} square>
+      <Grid container xs={6} component={Paper}  elevation={0} square>
         <div className={classes.paper}>
           <form className={classes.form} noValidate>
             <TextField

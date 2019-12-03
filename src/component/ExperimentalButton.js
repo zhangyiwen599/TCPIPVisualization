@@ -110,7 +110,8 @@ const data = {
     SYN: 0,
     FIN: 0,
     WindowSize: 5,
-    UrgantPointer: 0
+    UrgantPointer: 0,
+    hasChange:1
   };
 
 export default function ExperimentalButton(props) {
@@ -124,13 +125,15 @@ export default function ExperimentalButton(props) {
         {
             // props.fn()
             props.sendData(data);
+           
             props.toOutput();
             setActiveStep(prevActiveStep => 0);
-            // alert(data.ACK);
+            
             return;
         }
         else if(!data.isTcp){
             props.sendData(data);
+        
             props.toOutput();
             setActiveStep(prevActiveStep => 0);
             return;

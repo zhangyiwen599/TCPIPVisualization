@@ -19,9 +19,10 @@ var useStyles = makeStyles(theme => ({
         margin: '0px'
     },
     blank: {
-        width: '900px',
+        position:'absolute',
+        left:260,
         textAlign: "center",
-          backgroundColor: "yellow"
+        backgroundColor:"#cbf5fb",
     },
 
 
@@ -33,27 +34,33 @@ export default function MACModel(props){
     //alert(props.state);
         return(
             props.state < 5 ? <Fade in={props.state >= 1} timeout={1000}>
-                    <Grid xs="2" container className={classes.blank} direction="row" >
+                    <Grid xs="3" container className={classes.blank} direction="row" >
                         <Slide direction="up" in={props.state >= 2} timeout={1000}>
 
                             <Paper elevation="1" square>
                                 SrcMac:
                                     <br></br>
-                                4000
+                                    48 bit
+                                <br></br>
+                                    {props.data.sourceMac}
                                 </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 3} timeout={1000}>
                             <Paper elevation="1" square>
                                 DestMac:
                                 <br></br>
-                                4001
+                                48 bit
+                                <br></br>
+                                {props.data.destMac}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 4} timeout={1000}>
                             <Paper elevation="1" square>
                                 Protocol:
                                 <br></br>
-                                123
+                                16 bit
+                                <br></br>
+                                {props.data.protocol}
                             </Paper>
                         </Slide>
                       

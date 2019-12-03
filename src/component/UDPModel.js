@@ -39,12 +39,16 @@ export default function UDPModel(props){
                             <Paper elevation="1" square>
                                 SrcPort:
                                     <br></br>
+                                    16 bit
+                                <br></br>
                                 {props.data.sourcePort}
                                 </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 3} timeout={1000}>
                             <Paper elevation="1" square>
                                 DestPort:
+                                <br></br>
+                                16 bit
                                 <br></br>
                                 {props.data.destPort}
                             </Paper>
@@ -53,12 +57,16 @@ export default function UDPModel(props){
                             <Paper elevation="1" square>
                                 Length:
                                 <br></br>
+                                16 bit
+                                <br></br>
                                 {props.data.context.length}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 5} timeout={1000}>
                             <Paper elevation="1" square>
                                 Checksum:
+                                <br></br>
+                                16 bit
                                 <br></br>
                                 {/* {props.data.sourcePort} */}
                             </Paper>

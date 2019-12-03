@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -13,6 +13,7 @@ import { red } from '@material-ui/core/colors';
 import SignInSide from './SignInSide';
 import Show from './Show'
 import Show_new from './Show_new'
+import Show_decode from './Show_decode'
 import ExperimentalButton from './ExperimentalButton';
 
 
@@ -88,12 +89,17 @@ var inputData = {
     SYN: 0,
     FIN: 0,
     WindowSize: 5,
-    UrgantPointer: 0
+    UrgantPointer: 0,
+    hasChange:1
 }
+
+var resetReceiver
+var resetSender
 export default function MenuTabs() {
     const classes = useStyles();
     const [value, setValue] = React.useState(1);
-    
+    const sender = React.createRef();
+    const receiver = React.createRef();
 
     const handleChange = (event, newValue) => {
         // alert(newValue);
@@ -108,8 +114,12 @@ export default function MenuTabs() {
         setValue(1);
     };
 
-    const handleToOutput = () => {
+    const handleToSender = () => {
+        
         setValue(2);
+    };
+    const handleToReceiver = () => {
+        setValue(3);
     };
 
     const handleInput = (event) => {
@@ -120,9 +130,8 @@ export default function MenuTabs() {
         inputData = newData;
         // alert(inputData.ACK)
     }
-
+    
   
-
     // alert(inputValue.step);
 
     return (
@@ -131,7 +140,8 @@ export default function MenuTabs() {
                 <Tabs className={classes.tabs} value={value} onChange={handleChange} aria-label="simple tabs example" centered>
                     <Tab label="Welcome" {...a11yProps(0)} />
                     <Tab label="Input" {...a11yProps(1)} />
-                    <Tab label="output" {...a11yProps(2)} />
+                    <Tab label="Sender" {...a11yProps(2)} />
+                    <Tab label="Receiver" {...a11yProps(3)} />
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
@@ -142,13 +152,18 @@ export default function MenuTabs() {
             <TabPanel value={value} index={1}>
                 
                 {/* <SignInSide fn={handleToOutput} sendData={getChildData}></SignInSide> */}
-                <ExperimentalButton toOutput={handleToOutput}  sendData={getChildData}></ExperimentalButton>
+                <ExperimentalButton toOutput={handleToSender}  sendData={getChildData} ></ExperimentalButton>
 
                 <br></br>
             </TabPanel>
-            <TabPanel value={value} index={2}>
+            <TabPanel  value={value} index={2}>
                 
-                <Show_new data={inputData} fn={handleToInput} ></Show_new>
+                <Show_new  data={inputData} fn={handleToReceiver} backToInput={handleToInput} ></Show_new>
+                
+            </TabPanel>
+            <TabPanel value={value} index={3}>
+                
+                <Show_decode  data={inputData} fn={handleToInput}></Show_decode>
                 
             </TabPanel>
         </div>

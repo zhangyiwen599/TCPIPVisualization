@@ -24,7 +24,7 @@ export default function MACTable(props) {
                 <TableCell component="th" scope="row">
                     {"Protocol"}
                 </TableCell>
-                <TableCell align="right">123</TableCell>
+                <TableCell align="right">{props.data.protocol}</TableCell>
             </TableRow>
         </Slide>
 
@@ -33,7 +33,7 @@ export default function MACTable(props) {
                 <TableCell component="th" scope="row">
                     {"DestMac"}
                 </TableCell>
-                <TableCell align="right">4001</TableCell>
+                <TableCell align="right">{props.data.destMac}</TableCell>
             </TableRow>
         </Slide>
 
@@ -42,7 +42,7 @@ export default function MACTable(props) {
                 <TableCell component="th" scope="row">
                     {"SrcMac"}
                 </TableCell>
-                <TableCell align="right">4000</TableCell>
+                <TableCell align="right">{props.data.sourceMac}</TableCell>
             </TableRow>
         </Slide>
         </TableBody>

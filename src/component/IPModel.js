@@ -19,9 +19,10 @@ var useStyles = makeStyles(theme => ({
         margin: '0px'
     },
     blank: {
-        width: '900px',
+       
         textAlign: "center",
-          backgroundColor: "yellow"
+        //backgroundColor: "yellow"
+        backgroundColor:"#cbf5fb",
     },
 
 
@@ -33,55 +34,69 @@ export default function IPModel(props){
     //alert(props.state);
         return(
             props.state < 15 ? <Fade in={props.state >= 1} timeout={1000}>
-                    <Grid xs="10" container className={classes.blank} direction="row" >
+                    <Grid  container xs={9} className={classes.blank} direction="row" >
                         <Slide direction="up" in={props.state >= 2} timeout={1000}>
 
                             <Paper elevation="1" square>
                                 Version:
                                     <br></br>
-                            
+                                    4 bit
+                                <br></br>
+                                {props.data.version}
                                 </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 3} timeout={1000}>
                             <Paper elevation="1" square>
                                 IHL:
                                 <br></br>
-                                4001
+                                4 bit
+                                <br></br>
+                                {props.data.IHL}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 4} timeout={1000}>
                             <Paper elevation="1" square>
                                 DSCP:
                                 <br></br>
-                                123
+                                6 bit
+                                <br></br>
+                                {props.data.DSCP}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 5} timeout={1000}>
                             <Paper elevation="1" square>
                                 ECN:
                                 <br></br>
-                                123
+                                2 bit
+                                <br></br>
+                                {props.data.ECN}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 6} timeout={1000}>
                             <Paper elevation="1" square>
                                 Total Len:
                                 <br></br>
-                                99
+                                16 bit
+                                <br></br>
+                                {props.data.totalLength}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 7} timeout={1000}>
                             <Paper elevation="1" square>
                                 Identification:
                                 <br></br>
-                                000
+                                16 bit
+                                <br></br>
+                                {props.data.identification}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 8} timeout={1000}>
                             <Paper elevation="1" square>
                                 Flags:
                                 <br></br>
-                                0
+                                3 bit
+                                <br></br>
+                                {props.data.flags}
                             </Paper>
                         </Slide>
 
@@ -89,42 +104,54 @@ export default function IPModel(props){
                             <Paper elevation="1" square>
                                 Fragment Offset:
                                 <br></br>
-                                1
+                                13 bit
+                                <br></br>
+                                {props.data.fragmentOffset}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 10} timeout={1000}>
                             <Paper elevation="1" square>
                                 Time To Live:
                                 <br></br>
-                                0
+                                8 bit
+                                <br></br>
+                                {props.data.timeToLive}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 11} timeout={1000}>
                             <Paper elevation="1" square>
                                 Protocol:
                                 <br></br>
-                                1
+                                8 bit
+                                <br></br>
+                                {props.data.protocol}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 12} timeout={1000}>
                             <Paper elevation="1" square>
                                 Header Checksum:
                                 <br></br>
-                                0
+                                16 bit
+                                <br></br>
+                                {props.data.headerChecksum}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 13} timeout={1000}>
                             <Paper elevation="1" square>
                                 SrcIP:
                                 <br></br>
-                                1
+                                32 bit
+                                <br></br>
+                                {props.data.sourceIp}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 14} timeout={1000}>
                             <Paper elevation="1" square>
                                 DestIP:
                                 <br></br>
-                                1
+                                32 bit
+                                <br></br>
+                                {props.data.destIp}
                             </Paper>
                         </Slide>
                         
