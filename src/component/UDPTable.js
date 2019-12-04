@@ -24,7 +24,7 @@ export default function UDPTable(props) {
                 <TableCell component="th" scope="row">
                     {"Checksum"}
                 </TableCell>
-                <TableCell align="right">89</TableCell>
+                <TableCell align="right">{props.data.udpCheckSum}</TableCell>
             </TableRow>
         </Slide>
 

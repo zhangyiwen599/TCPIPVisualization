@@ -114,7 +114,7 @@ export default function Show_new(props) {
     const [ready, setReady] = React.useState(320);
     const [tcpState,setTcpState] = React.useState(0);
     
-
+    const timeout = props.data.timeout;
     
     const clickHandler = () => {
         // if(ready==314||ready==119||ready==205||ready==319){
@@ -172,21 +172,21 @@ export default function Show_new(props) {
         var i;
         IntervalId = null;
         if(ready>301&&ready<=314){
-            window.setTimeout(stopTimer,(ready-300)*100);
-            IntervalId = window.setInterval(clickHandler,100);
+            window.setTimeout(stopTimer,(ready-300)*timeout);
+            IntervalId = window.setInterval(clickHandler,timeout);
         }
         else if(ready>101&&ready<=119){
-            window.setTimeout(stopTimer,(ready-100)*100);
-            IntervalId = window.setInterval(clickHandler,100);
+            window.setTimeout(stopTimer,(ready-100)*timeout);
+            IntervalId = window.setInterval(clickHandler,timeout);
             
         }
         else if(ready>201&&ready<=205){
-            window.setTimeout(stopTimer,(ready-200)*100);
-            IntervalId = window.setInterval(clickHandler,100);
+            window.setTimeout(stopTimer,(ready-200)*timeout);
+            IntervalId = window.setInterval(clickHandler,timeout);
         }
         else if(ready>316&&ready<=319){
-            window.setTimeout(stopTimer,(ready-315)*100);
-            IntervalId = window.setInterval(clickHandler,100);
+            window.setTimeout(stopTimer,(ready-315)*timeout);
+            IntervalId = window.setInterval(clickHandler,timeout);
         }
 
 

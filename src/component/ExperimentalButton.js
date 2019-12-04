@@ -12,6 +12,7 @@ import SignInSide from './SignInSide';
 import Grid from '@material-ui/core/Grid';
 import Fade from '@material-ui/core/Fade';
 import IPButtons from './IPButtons';
+import GenHeaders from './GenHeaders'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -114,7 +115,17 @@ const data = {
     FIN: 0,
     WindowSize: 5,
     UrgantPointer: 0,
-    hasChange:1
+    IHL: 5,
+    DSCP: 0,
+    ECN: 0,
+    Identification: 0,
+    Flags: 0,
+    FragmentOffset: 0,
+    TTL: 128,
+    timeout:100,
+    tcpCheckSum:0,
+    udpCheckSum:0,
+    ipCheckSum:0
   };
 
 export default function ExperimentalButton(props) {
@@ -127,6 +138,15 @@ export default function ExperimentalButton(props) {
         if (activeStep === getSteps().length - 1)
         {
             // props.fn()
+
+            data.senderTcpHeader = GenHeaders.tcpHeader(data.sourcePort,data.destPort,data.sourceIp,data.destIp,data.SeqNum,data.ACKNum,data.DataOffset,data.NS,data.CWR,data.ECE,data.URG,data.ACK,data.PSH,data.RST,data.SYN,data.FIN,data.WindowSize,data.UrgantPointer);
+            data.reciverTcpHeader = GenHeaders.tcpHeader(data.sourcePort,data.destPort,data.context,'',data.sourceIp,data.destIp);
+            data.udpHeader = GenHeaders.udpHeader(data.sourcePort,data.destPort,data.context);
+            data.ipHeader = GenHeaders.ipHeader(data.sourceIp,data.destIp,data.context,data.IHL,data.DSCP,data.ECN,data.Identification,data.Flags,data.FragmentOffset,data.TTL);
+            data.macHeader = GenHeaders.macHeader(data.sourceMac,data.destMac);
+            data.tcpCheckSum = parseInt(GenHeaders.checksum(data.sourceIp,data.destIp,6,data.context.length), 16).toString(10);
+            data.udpCheckSum = parseInt(GenHeaders.checksum(data.sourceIp,data.destIp,17,data.context.length), 16).toString(10);
+            data.ipCheckSum = parseInt(GenHeaders.checksum(data.sourceIp,data.destIp,4,data.context.length), 16).toString(10);
             props.sendData(data);
            
             props.toOutput();
@@ -135,17 +155,33 @@ export default function ExperimentalButton(props) {
             return;
         }
         else if(!data.isTcp){
+
+            data.senderTcpHeader = GenHeaders.tcpHeader(data.sourcePort,data.destPort,data.sourceIp,data.destIp,data.SeqNum,data.ACKNum,data.DataOffset,data.NS,data.CWR,data.ECE,data.URG,data.ACK,data.PSH,data.RST,data.SYN,data.FIN,data.WindowSize,data.UrgantPointer);
+            data.reciverTcpHeader = GenHeaders.tcpHeader(data.sourcePort,data.destPort,data.context,'',data.sourceIp,data.destIp);
+            data.udpHeader = GenHeaders.udpHeader(data.sourcePort,data.destPort,data.context);
+            data.ipHeader = GenHeaders.ipHeader(data.sourceIp,data.destIp,data.context,data.IHL,data.DSCP,data.ECN,data.Identification,data.Flags,data.FragmentOffset,data.TTL);
+            data.macHeader = GenHeaders.macHeader(data.sourceMac,data.destMac);
+            data.tcpCheckSum = parseInt(GenHeaders.checksum(data.sourceIp,data.destIp,6,data.context.length), 16).toString(10);
+            data.udpCheckSum = parseInt(GenHeaders.checksum(data.sourceIp,data.destIp,17,data.context.length), 16).toString(10);
+            data.ipCheckSum = parseInt(GenHeaders.checksum(data.sourceIp,data.destIp,4,data.context.length), 16).toString(10);
             props.sendData(data);
         
-            props.toOutput();
-            setActiveStep(prevActiveStep => 0);
+            
+            setActiveStep(prevActiveStep => 2);
             return;
         }
         setActiveStep(prevActiveStep => prevActiveStep + 1);
     };
 
     const handleBack = () => {
-        setActiveStep(prevActiveStep => prevActiveStep - 1);
+        if(data.isTcp)
+            setActiveStep(prevActiveStep => prevActiveStep - 1);
+        else{
+            if(activeStep === getSteps().length - 1)
+                setActiveStep(prevActiveStep => 0);
+            else    
+                setActiveStep(prevActiveStep => prevActiveStep - 1);
+        }
     };
 
     const getBasicData = (newData) => {
@@ -156,14 +192,17 @@ export default function ExperimentalButton(props) {
         data.destPort = newData.destPort;
         data.destMac = newData.destMac;
 
-        data.senderTcpHeader = newData.senderTcpHeader;
-        data.reciverTcpHeader = newData.reciverTcpHeader;
-        data.udpHeader = newData.udpHeader;
-        data.ipHeader = newData.ipHeader;
-        data.macHeader = newData.macHeader;
+        // data.senderTcpHeader = newData.senderTcpHeader;
+        // data.reciverTcpHeader = newData.reciverTcpHeader;
+        // data.udpHeader = newData.udpHeader;
+        // data.ipHeader = newData.ipHeader;
+        // data.macHeader = newData.macHeader;
+        
+        
         data.context = newData.context;
         data.isTcp = newData.isTcp;
         data.needAdd = newData.needAdd;
+        data.timeout = newData.timeout;
     }
 
     const getTcpData = (newData) =>{
@@ -182,6 +221,16 @@ export default function ExperimentalButton(props) {
         data.WindowSize= newData.WindowSize;
         data.UrgantPointer= newData.UrgantPointer;
         //alert(data.ACK);
+    }
+
+    const getIpData = (newData) => {
+        data.IHL = newData.IHL;
+        data.DSCP= newData.DSCP;
+        data.ECN= newData.ECN;
+        data.Identification = newData.Identification;
+        data.Flags = newData.Flags;
+        data.FragmentOffset = newData.FragmentOffset;
+        data.TTL = newData.TTL;
     }
 
     return (
@@ -232,7 +281,7 @@ export default function ExperimentalButton(props) {
                 <TCPButtons sendData={getTcpData}></TCPButtons>
             </Panel>
             <Panel value={activeStep} index={2}>
-                <IPButtons></IPButtons>
+                <IPButtons sendData={getIpData}></IPButtons>
             </Panel>
             
         </div>

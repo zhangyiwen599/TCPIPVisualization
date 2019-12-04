@@ -63,7 +63,7 @@ export default function IPButtons(props) {
             required
             id="outlined-required"
             label="IHL"
-            defaultValue="5"
+            defaultValue={state.IHL}
             className={classes.textField}
             margin="normal"
             variant="outlined"
@@ -75,7 +75,7 @@ export default function IPButtons(props) {
             required
             id="outlined-required"
             label="DSCP"
-            defaultValue="0"
+            defaultValue={state.DSCP}
             className={classes.textField}
             margin="normal"
             variant="outlined"
@@ -87,7 +87,7 @@ export default function IPButtons(props) {
             required
             id="outlined-required"
             label="ECN"
-            defaultValue="0"
+            defaultValue={state.ECN}
             className={classes.textField}
             margin="normal"
             variant="outlined"
@@ -99,7 +99,7 @@ export default function IPButtons(props) {
             required
             id="outlined-required"
             label="Identification"
-            defaultValue="0"
+            defaultValue={state.Identification}
             className={classes.textField}
             margin="normal"
             variant="outlined"
@@ -111,7 +111,7 @@ export default function IPButtons(props) {
             required
             id="outlined-required"
             label="Flags"
-            defaultValue="0"
+            defaultValue={state.Flags}
             className={classes.textField}
             margin="normal"
             variant="outlined"
@@ -123,7 +123,7 @@ export default function IPButtons(props) {
             required
             id="outlined-required"
             label="FragmentOffset"
-            defaultValue="5"
+            defaultValue={state.FragmentOffset}
             className={classes.textField}
             margin="normal"
             variant="outlined"
@@ -135,7 +135,7 @@ export default function IPButtons(props) {
             required
             id="outlined-required"
             label="TTL"
-            defaultValue="0"
+            defaultValue={state.TTL}
             className={classes.textField}
             margin="normal"
             variant="outlined"

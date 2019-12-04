@@ -82,7 +82,7 @@ export default function TCPButtons(props) {
             required
             id="outlined-required"
             label="Seq Num"
-            defaultValue="1"
+            defaultValue={state.SeqNum}
             className={classes.textField}
             margin="normal"
             variant="outlined"
@@ -94,7 +94,7 @@ export default function TCPButtons(props) {
             required
             id="outlined-required"
             label="ACK Num"
-            defaultValue="1"
+            defaultValue={state.ACKNum}
             className={classes.textField}
             margin="normal"
             variant="outlined"
@@ -106,7 +106,7 @@ export default function TCPButtons(props) {
             required
             id="outlined-required"
             label="Data Offset"
-            defaultValue="5"
+            defaultValue={state.DataOffset}
             className={classes.textField}
             margin="normal"
             variant="outlined"
@@ -234,7 +234,7 @@ export default function TCPButtons(props) {
             required
             id="outlined-required"
             label="Window Size"
-            defaultValue="5"
+            defaultValue={state.WindowSize}
             className={classes.textField}
             margin="normal"
             variant="outlined"
@@ -246,7 +246,7 @@ export default function TCPButtons(props) {
             required
             id="outlined-required"
             label="Urgant pointer"
-            defaultValue="0"
+            defaultValue={state.UrgantPointer}
             className={classes.textField}
             margin="normal"
             variant="outlined"

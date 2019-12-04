@@ -60,7 +60,7 @@ export default function MACModel(props){
                                 <br></br>
                                 16 bit
                                 <br></br>
-                                {props.data.protocol}
+                                2048
                             </Paper>
                         </Slide>
                       

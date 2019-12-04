@@ -19,9 +19,10 @@ var useStyles = makeStyles(theme => ({
         margin: '0px'
     },
     blank: {
-        width: '900px',
+        position:'absolute',
+        left:500,
+        backgroundColor:"#cbf5fb",
         textAlign: "center",
-          backgroundColor: "yellow"
     },
 
 
@@ -68,7 +69,7 @@ export default function UDPModel(props){
                                 <br></br>
                                 16 bit
                                 <br></br>
-                                {/* {props.data.sourcePort} */}
+                                {props.data.udpCheckSum}
                             </Paper>
                         </Slide>
                         

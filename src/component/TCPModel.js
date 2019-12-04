@@ -185,7 +185,7 @@ export default function TCPModel(props){
                                 <br></br>
                                 16 bit
                                 <br></br>
-                                Checksum
+                                {props.data.tcpCheckSum}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 19} timeout={1000}>

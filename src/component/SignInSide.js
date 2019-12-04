@@ -82,6 +82,7 @@ var newData = {
   context:'',
   isTcp:true,
   needAdd:false,
+  timeout:100
 }
 
 export default function SignInSide(props) {
@@ -95,7 +96,8 @@ export default function SignInSide(props) {
       destIp:"192.168.80.88",
       destPort:"4001",
       destMac:"80:00:20:20:3A:AE",
-      context:'Hello World'
+      context:'Hello World',
+      timeout:100
   });
 
   const handleChange = prop => event => {
@@ -104,11 +106,7 @@ export default function SignInSide(props) {
   
  
   const handleClick = () =>{
-    // newData.senderTcpHeader = GenHeaders.tcpHeader(values.sourcePort,values.destPort,'',values.context,values.sourceIp,values.destIp);
-    // newData.reciverTcpHeader = GenHeaders.tcpHeader(values.sourcePort,values.destPort,values.context,'',values.sourceIp,values.destIp);
-    // newData.udpHeader = GenHeaders.udpHeader(values.sourcePort,values.destPort,values.context);
-    // newData.ipHeader = GenHeaders.ipHeader(values.sourceIp,values.destIp,values.context);
-    // newData.macHeader = GenHeaders.macHeader(values.sourceMac,values.destMac);
+
     newData.context = values.context;
     
     newData.needAdd = (values.context.length<=5&&newData.isTcp) || (!newData.isTcp&&values.context.length<=17);
@@ -118,7 +116,7 @@ export default function SignInSide(props) {
     newData.destIp = values.destIp;
     newData.destPort = values.destPort;
     newData.destMac = values.destMac;
-  
+    newData.timeout = values.timeout;
   
     props.sendData(newData);
     props.next();
@@ -240,7 +238,7 @@ export default function SignInSide(props) {
               variant="outlined"
               // margin="dense"
               //required
-              fullWidth
+              //fullWidth
               name="context"
               label="context"
               //type="password"
@@ -250,7 +248,23 @@ export default function SignInSide(props) {
               onChange={handleChange('context')}
               //autoComplete="current-password"
             />
-           
+
+            <TextField
+              // variant="outlined"
+              variant="outlined"
+              // margin="dense"
+              //required
+              //fullWidth
+              name="timeout"
+              label="timeout"
+              //type="password"
+              alignItems="center"
+              id="timeout"
+              value={values.timeout}
+              onChange={handleChange('timeout')}
+              //autoComplete="current-password"s
+            />
+            <br></br>
             <CustomizedRadios fn={getRadioData}></CustomizedRadios>
             <Button
               // type="submit"

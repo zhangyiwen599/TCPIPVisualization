@@ -90,7 +90,17 @@ var inputData = {
     FIN: 0,
     WindowSize: 5,
     UrgantPointer: 0,
-    hasChange:1
+    IHL: 5,
+    DSCP: 0,
+    ECN: 0,
+    Identification: 0,
+    Flags: 0,
+    FragmentOffset: 0,
+    TTL: 128,
+    timeout:1000,
+    tcpCheckSum:0,
+    udpCheckSum:0,
+    ipCheckSum:0
 }
 
 var resetReceiver

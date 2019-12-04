@@ -29,7 +29,7 @@ export default function TCPTable(props) {
                 <TableCell component="th" scope="row">
                     {"Checksum"}
                 </TableCell>
-                <TableCell align="right">{props.data.Checksum}</TableCell>
+                <TableCell align="right">{props.data.tcpCheckSum}</TableCell>
             </TableRow>
         </Slide>
 

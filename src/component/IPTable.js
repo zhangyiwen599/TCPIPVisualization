@@ -40,7 +40,7 @@ export default function IPTable(props) {
                 <TableCell component="th" scope="row">
                     {"Checksum"}
                 </TableCell>
-                <TableCell align="right">{props.data.headerChecksum}</TableCell>
+                <TableCell align="right">{props.data.ipCheckSum}</TableCell>
             </TableRow>
         </Slide>
 
@@ -49,16 +49,16 @@ export default function IPTable(props) {
                 <TableCell component="th" scope="row">
                     {"Protocol"}
                 </TableCell>
-                <TableCell align="right">{props.data.protocol}</TableCell>
+                <TableCell align="right">128</TableCell>
             </TableRow>
         </Slide>
 
         <Slide direction="down" in={props.state < 10} timeout={1000}>
             <TableRow >
                 <TableCell component="th" scope="row">
-                    {"LiveTime"}
+                    {"TTL"}
                 </TableCell>
-                <TableCell align="right">{props.data.timeToLive}</TableCell>
+                <TableCell align="right">{props.data.TTL}</TableCell>
             </TableRow>
         </Slide>
 
@@ -67,7 +67,7 @@ export default function IPTable(props) {
                 <TableCell component="th" scope="row">
                     {"FragOffset"}
                 </TableCell>
-                <TableCell align="right">{props.data.fragmentOffset}</TableCell>
+                <TableCell align="right">{props.data.FragmentOffset}</TableCell>
             </TableRow>
         </Slide>
 
@@ -76,7 +76,7 @@ export default function IPTable(props) {
                 <TableCell component="th" scope="row">
                     {"Flags"}
                 </TableCell>
-                <TableCell align="right">{props.data.flags}</TableCell>
+                <TableCell align="right">{props.data.Flags}</TableCell>
             </TableRow>
         </Slide>
         <Slide direction="down" in={props.state < 7} timeout={1000}>
@@ -84,7 +84,7 @@ export default function IPTable(props) {
                 <TableCell component="th" scope="row">
                     {"Identification"}
                 </TableCell>
-                <TableCell align="right">{props.data.identification}</TableCell>
+                <TableCell align="right">{props.data.Identification}</TableCell>
             </TableRow>
         </Slide>
 
@@ -93,7 +93,7 @@ export default function IPTable(props) {
                 <TableCell component="th" scope="row">
                     {"Tatol Len"}
                 </TableCell>
-                <TableCell align="right">{props.data.totalLength}</TableCell>
+                <TableCell align="right">{20+props.data.context.length}</TableCell>
             </TableRow>
         </Slide>
 
@@ -129,7 +129,7 @@ export default function IPTable(props) {
                 <TableCell component="th" scope="row">
                     {"Version"}
                 </TableCell>
-                <TableCell align="right">{props.data.version}</TableCell>
+                <TableCell align="right">4</TableCell>
             </TableRow>
         </Slide>
         </TableBody>

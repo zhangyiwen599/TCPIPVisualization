@@ -24,7 +24,7 @@ export default function MACTable(props) {
                 <TableCell component="th" scope="row">
                     {"Protocol"}
                 </TableCell>
-                <TableCell align="right">{props.data.protocol}</TableCell>
+                <TableCell align="right">2048</TableCell>
             </TableRow>
         </Slide>
 

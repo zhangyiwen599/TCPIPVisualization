@@ -42,7 +42,7 @@ export default function IPModel(props){
                                     <br></br>
                                     4 bit
                                 <br></br>
-                                {props.data.version}
+                                4
                                 </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 3} timeout={1000}>
@@ -78,7 +78,7 @@ export default function IPModel(props){
                                 <br></br>
                                 16 bit
                                 <br></br>
-                                {props.data.totalLength}
+                                {20 + props.data.context.length}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 7} timeout={1000}>
@@ -87,7 +87,7 @@ export default function IPModel(props){
                                 <br></br>
                                 16 bit
                                 <br></br>
-                                {props.data.identification}
+                                {props.data.Identification}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 8} timeout={1000}>
@@ -96,7 +96,7 @@ export default function IPModel(props){
                                 <br></br>
                                 3 bit
                                 <br></br>
-                                {props.data.flags}
+                                {props.data.Flags}
                             </Paper>
                         </Slide>
 
@@ -106,16 +106,16 @@ export default function IPModel(props){
                                 <br></br>
                                 13 bit
                                 <br></br>
-                                {props.data.fragmentOffset}
+                                {props.data.FragmentOffset}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 10} timeout={1000}>
                             <Paper elevation="1" square>
-                                Time To Live:
+                                TTL:
                                 <br></br>
                                 8 bit
                                 <br></br>
-                                {props.data.timeToLive}
+                                {props.data.TTL}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 11} timeout={1000}>
@@ -124,7 +124,7 @@ export default function IPModel(props){
                                 <br></br>
                                 8 bit
                                 <br></br>
-                                {props.data.protocol}
+                                128
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 12} timeout={1000}>
@@ -133,7 +133,7 @@ export default function IPModel(props){
                                 <br></br>
                                 16 bit
                                 <br></br>
-                                {props.data.headerChecksum}
+                                {props.data.ipCheckSum}
                             </Paper>
                         </Slide>
                         <Slide direction="up" in={props.state >= 13} timeout={1000}>
