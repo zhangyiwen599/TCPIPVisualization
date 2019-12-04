@@ -11,6 +11,7 @@ import TCPButtons from './TCPButtons'
 import SignInSide from './SignInSide';
 import Grid from '@material-ui/core/Grid';
 import Fade from '@material-ui/core/Fade';
+import IPButtons from './IPButtons';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -68,7 +69,7 @@ Panel.propTypes = {
 };
 
 function getSteps() {
-    return ['Basic input', 'For TCP'];
+    return ['Basic input', 'For TCP', "For IP"];
 }
 
 function getStepContent(step) {
@@ -77,6 +78,8 @@ function getStepContent(step) {
             return 'Basic input...';
         case 1:
             return 'For TCP...';
+        case 2:
+            return "For IP...";
         default:
             return 'Unknown step';
     }
@@ -228,6 +231,10 @@ export default function ExperimentalButton(props) {
             <Panel value={activeStep} index={1}>
                 <TCPButtons sendData={getTcpData}></TCPButtons>
             </Panel>
+            <Panel value={activeStep} index={2}>
+                <IPButtons></IPButtons>
+            </Panel>
+            
         </div>
     );
 }
