@@ -160,7 +160,7 @@ export default function Show_new(props) {
 
     const resetHandler = () => {
         setReady(ready => 0);
-        props.backToInput();
+        props.fn();
     };
 
     const stopTimer = () => {
