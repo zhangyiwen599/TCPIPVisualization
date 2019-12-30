@@ -190,7 +190,7 @@ export default function Welcome(props) {
               <Grid item md={6}>
                 <div className={classes.mainFeaturedPostContent}>
                   <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-                  Welcome to Our Tcp/Ip Model Visualization!
+                  Welcome to Our TCP/IP Model Visualization!
                   </Typography>
                   <Typography variant="h5" color="inherit" paragraph>
                   Input your sender and receiver information, then boom to show!
