@@ -107,7 +107,7 @@ var resetReceiver
 var resetSender
 export default function MenuTabs() {
     const classes = useStyles();
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = React.useState(2);
     const sender = React.createRef();
     const receiver = React.createRef();
 
@@ -124,8 +124,7 @@ export default function MenuTabs() {
         setValue(1);
     };
 
-    const handleToSender = () => {
-        
+    const handleToSender = () => {        
         setValue(2);
     };
     const handleToReceiver = () => {
@@ -148,10 +147,10 @@ export default function MenuTabs() {
         <div className={classes.root}>
             <AppBar className={classes.appbar} position="relative">
                 <Tabs className={classes.tabs} value={value} onChange={handleChange} aria-label="simple tabs example" centered>
-                    <Tab label="Welcome" {...a11yProps(0)} />
-                    <Tab label="Input" {...a11yProps(1)} />
-                    <Tab label="Sender" {...a11yProps(2)} />
-                    <Tab label="Receiver" {...a11yProps(3)} />
+                    <Tab label="Welcome" {...a11yProps(0)}  />
+                    <Tab label="Input" {...a11yProps(1)} disabled />
+                    <Tab label="Sender" {...a11yProps(2)} disabled />
+                    <Tab label="Receiver" {...a11yProps(3)} disabled />
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>

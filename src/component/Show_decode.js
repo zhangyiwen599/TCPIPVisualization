@@ -32,6 +32,8 @@ import MACModel from './MACModel';
 import MACTable from './MACTable';
 import zIndex from '@material-ui/core/styles/zIndex';
 import { clearInterval } from 'timers';
+import Typography from '@material-ui/core/Typography';
+
 const num = 124;
 
 
@@ -105,6 +107,11 @@ var useStyles = makeStyles(theme => ({
         position: "absolute",
         left: 1150,
         top: "50px"
+    },
+    introduceText:{
+        position:"absolute",
+        left:"150px",
+        top: "100px"
     }
 
 }));
@@ -159,7 +166,7 @@ export default function Show_new(props) {
     };
 
     const resetHandler = () => {
-        setReady(ready => 0);
+        setReady(ready => 320);
         props.fn();
     };
 
@@ -211,6 +218,83 @@ export default function Show_new(props) {
             <Fade in={(ready==119)||(ready==205)||(ready==314)||(ready==319)}>
             <Button className={classes.myButton3} variant="contained" color="primary" onClick={skipHandler}>skip</Button>
             </Fade>
+
+
+
+            <Slide direction="up" in={ready==0} timeout={1000}>
+            <Paper className={classes.introduceText} >
+                    <Typography component="p">
+                    Congratulations，传输层头(TCP/UDP头) 正式拆解完成啦！
+                    <br>
+                    </br>
+                    我们的演示也到此为止了
+                    </Typography>
+            </Paper>
+            </Slide>
+
+            <Slide direction="up" in={ready>=1 && ready < 300} timeout={1000}>
+            <Paper className={classes.introduceText} >
+                    <Typography component="p">
+                    现在开始进入拆解 传输层头(TCP/UDP头) 的过程 
+                    </Typography>
+            </Paper>
+            </Slide>
+
+
+
+            <Slide direction="up" in={ready==300} timeout={1000}>
+            <Paper className={classes.introduceText} >
+                    <Typography component="p">
+                    Congratulations，网络层头（IP头） 正式拆解完成啦！
+                    <br></br>
+                    拆解出来的参数会显示在屏幕的右侧，我们会开始 传输层 的拆解工作啦！
+                    </Typography>
+            </Paper>
+            </Slide>
+
+            <Slide direction="up" in={ready>300 && ready<315} timeout={1000}>
+            <Paper className={classes.introduceText} >
+                    <Typography component="p">
+                    现在开始进入拆解 网络层头（IP头）的过程 
+
+                    </Typography>
+            </Paper>
+            </Slide>
+
+            <Slide direction="up" in={ready==315} timeout={1000}>
+            <Paper className={classes.introduceText} >
+                    <Typography component="p">
+                    Congratulations，数据链路层头（MAC头） 正式拆解完成啦！
+                    <br></br>
+                    拆解出来的参数会显示在屏幕的右侧，我们会开始 网络层 的拆解工作啦！
+                    </Typography>
+            </Paper>
+            </Slide>
+
+            <Slide direction="up" in={ready>315 && ready<320} timeout={1000}>
+            <Paper className={classes.introduceText} >
+                    <Typography component="p">
+                    好啦让我们进入拆解 数据链路层头（MAC头）的工作吧！ 
+                    <br>
+                    </br>
+                    点击 click 可以一个一个展示读取并且拆解头的过程， 如果想要快进，就点击 skip 哟。 开始尽情探索吧！
+                    </Typography>
+            </Paper>
+            </Slide>
+
+
+            <Slide direction="up" in={ready>=320} timeout={1000}>
+            <Paper className={classes.introduceText} >
+                    <Typography component="p">
+                    好啦，经历了漫长的物理层的传输，我们的包达到了接收方的手里啦！
+                    <br>
+                    </br>
+                    下面是我们收到的包哟，屏幕右侧是我们可以从包内获取的参数信息呢。 点击 click 让我们开始接收方的解包之旅吧！
+                    </Typography>
+            </Paper>
+            </Slide>
+
+           
 
             {/* TCP/IP model */}
             <Grid container className={classes.animate}>

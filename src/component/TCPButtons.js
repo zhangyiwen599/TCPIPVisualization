@@ -70,11 +70,10 @@ export default function TCPButtons(props) {
   return (
     <div>
       <Typography  variant="h5" className={classes.header}>
-            TCP configuration
+            TCP advanced configuration
       </Typography>
     
     <Grid className={classes.root}>
-      
       <Grid container spacing={1} className={classes.test} direction="row"> 
       
         <Grid item xs={12} sm={4} >
