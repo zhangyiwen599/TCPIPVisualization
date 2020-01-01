@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
+import Typography from '@material-ui/core/Typography';
 
 
 const useStyles = makeStyles(theme => ({
@@ -32,8 +33,14 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary,
   },
   test: {
-    textAlign:'center',
+    textAlign: 'center',
+  },
+  header: {
+    position: "absolute",
+    left: "42%",
+    top: "60px"
   }
+
 }));
 
 
@@ -56,91 +63,97 @@ export default function IPButtons(props) {
 
 
   return (
-    <div className={classes.root}>
-      <Grid container spacing={3} className={classes.test} direction="row"> 
-        <Grid item xs={12} sm={4} >
-          <TextField
-            required
-            id="outlined-required"
-            label="IHL"
-            defaultValue={state.IHL}
-            className={classes.textField}
-            margin="normal"
-            variant="outlined"
-            onChange={handleChange('IHL')}
-          />
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <TextField
-            required
-            id="outlined-required"
-            label="DSCP"
-            defaultValue={state.DSCP}
-            className={classes.textField}
-            margin="normal"
-            variant="outlined"
-            onChange={handleChange('DSCP')}
-          />
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <TextField
-            required
-            id="outlined-required"
-            label="ECN"
-            defaultValue={state.ECN}
-            className={classes.textField}
-            margin="normal"
-            variant="outlined"
-            onChange={handleChange('ECN')}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="outlined-required"
-            label="Identification"
-            defaultValue={state.Identification}
-            className={classes.textField}
-            margin="normal"
-            variant="outlined"
-            onChange={handleChange('Identification')}
+    <div >
+      <Typography variant="h5" className={classes.header}>
+        IP advanced configuration
+      </Typography>
+
+      <Grid className={classes.root}>
+        <Grid container spacing={1} className={classes.test} direction="row">
+          <Grid item xs={12} sm={4} >
+            <TextField
+              required
+              id="outlined-required"
+              label="IHL"
+              defaultValue={state.IHL}
+              className={classes.textField}
+              margin="normal"
+              variant="outlined"
+              onChange={handleChange('IHL')}
             />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="outlined-required"
-            label="Flags"
-            defaultValue={state.Flags}
-            className={classes.textField}
-            margin="normal"
-            variant="outlined"
-            onChange={handleChange('Flags')}
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <TextField
+              required
+              id="outlined-required"
+              label="DSCP"
+              defaultValue={state.DSCP}
+              className={classes.textField}
+              margin="normal"
+              variant="outlined"
+              onChange={handleChange('DSCP')}
             />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="outlined-required"
-            label="FragmentOffset"
-            defaultValue={state.FragmentOffset}
-            className={classes.textField}
-            margin="normal"
-            variant="outlined"
-            onChange={handleChange('FragmentOffset')}
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <TextField
+              required
+              id="outlined-required"
+              label="ECN"
+              defaultValue={state.ECN}
+              className={classes.textField}
+              margin="normal"
+              variant="outlined"
+              onChange={handleChange('ECN')}
             />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="outlined-required"
-            label="TTL"
-            defaultValue={state.TTL}
-            className={classes.textField}
-            margin="normal"
-            variant="outlined"
-            onChange={handleChange('TTL')}
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              id="outlined-required"
+              label="Identification"
+              defaultValue={state.Identification}
+              className={classes.textField}
+              margin="normal"
+              variant="outlined"
+              onChange={handleChange('Identification')}
             />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              id="outlined-required"
+              label="Flags"
+              defaultValue={state.Flags}
+              className={classes.textField}
+              margin="normal"
+              variant="outlined"
+              onChange={handleChange('Flags')}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              id="outlined-required"
+              label="FragmentOffset"
+              defaultValue={state.FragmentOffset}
+              className={classes.textField}
+              margin="normal"
+              variant="outlined"
+              onChange={handleChange('FragmentOffset')}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              id="outlined-required"
+              label="TTL"
+              defaultValue={state.TTL}
+              className={classes.textField}
+              margin="normal"
+              variant="outlined"
+              onChange={handleChange('TTL')}
+            />
+          </Grid>
         </Grid>
       </Grid>
     </div>

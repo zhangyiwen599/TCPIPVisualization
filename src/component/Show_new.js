@@ -32,6 +32,8 @@ import MACModel from './MACModel';
 import MACTable from './MACTable';
 import zIndex from '@material-ui/core/styles/zIndex';
 import { clearInterval } from 'timers';
+import Typography from '@material-ui/core/Typography';
+
 const num = 124;
 
 
@@ -105,6 +107,11 @@ var useStyles = makeStyles(theme => ({
         position: "absolute",
         left: 1150,
         top: "50px"
+    },
+    introduceText:{
+        position:"absolute",
+        left:"150px",
+        top: "100px"
     }
 
 }));
@@ -123,6 +130,7 @@ export default function Show_new(props) {
     
         setReady(ready => ready + 1);
         if(ready>=320){
+            setReady(ready=>0);
             props.fn();
         }
 
@@ -192,10 +200,7 @@ export default function Show_new(props) {
         // timer = window.setInterval(clickHandler,1000);
         
     }
-    // if(props.data.hasChange){
-    //     setReady(ready=>0);
-        
-    // }
+  
 
     var width = 11;
     // alert(props.data.UrgantPointer)
@@ -209,6 +214,83 @@ export default function Show_new(props) {
             <Button className={classes.myButton3} variant="contained" color="primary" onClick={skipHandler}>skip</Button>
             </Fade>
 
+            <Slide direction="up" in={ready==0} timeout={1000}>
+            <Paper className={classes.introduceText} >
+                    <Typography component="p">
+                    这就是我们的可视化界面啦。 屏幕右侧是你刚刚填写好的参数
+                    <br></br>
+                    下面的包是你填写的想要发送的内容，点击 click 让我们开始可视化的探索之旅吧！
+                    </Typography>
+            </Paper>
+            </Slide>
+
+            <Slide direction="up" in={ready>=1 && ready < 300} timeout={1000}>
+            <Paper className={classes.introduceText} >
+                    <Typography component="p">
+                    好啦让我们进入填写 传输层头(TCP/UDP头)的工作吧！ 点击 click 可以一个一个展示填充包的过程， 
+                    <br></br>
+                    如果想要快进，就点击 skip 哟。 开始尽情探索吧！
+                    </Typography>
+            </Paper>
+            </Slide>
+
+
+
+            <Slide direction="up" in={ready==300} timeout={1000}>
+            <Paper className={classes.introduceText} >
+                    <Typography component="p">
+                    Congratulations，传输层头(TCP/UDP头) 正式填充完成啦！我们会开始 网络层 的填充工作啦！ 
+                    <br></br>
+                    另外，在 传输层头(TCP/UDP头) 处鼠标悬浮就可以看到全部的 传输层头(TCP/UDP头) 的 16进制 代码啦！感兴趣的可以探索一下呢！
+                    </Typography>
+            </Paper>
+            </Slide>
+
+            <Slide direction="up" in={ready>300 && ready<315} timeout={1000}>
+            <Paper className={classes.introduceText} >
+                    <Typography component="p">
+                    现在进行网络层的填充工作
+                    </Typography>
+            </Paper>
+            </Slide>
+
+            <Slide direction="up" in={ready==315} timeout={1000}>
+            <Paper className={classes.introduceText} >
+                    <Typography component="p">
+                    Congratulations，网络层头（IP头） 正式填充完成啦！我们会开始 数据链路层 的填充工作啦！ 
+                    <br></br>
+                    另外，在 网络层头（IP头） 处鼠标悬浮就可以看到全部的 网络层头（IP头） 的 16进制 代码啦！感兴趣的可以探索一下呢！
+                    </Typography>
+            </Paper>
+            </Slide>
+
+            <Slide direction="up" in={ready>315 && ready<320} timeout={1000}>
+            <Paper className={classes.introduceText} >
+                    <Typography component="p">
+                    现在进行数据链路层的填充工作
+                    </Typography>
+            </Paper>
+            </Slide>
+
+
+            <Slide direction="up" in={ready>=320} timeout={1000}>
+            <Paper className={classes.introduceText} >
+                    <Typography component="p">
+                    Congratulations，数据链路层头（MAC头） 正式填充完成啦！发送方的填充任务完成！ 
+                    <br></br>
+                    另外，在 数据链路层头（MAC头） 处鼠标悬浮就可以看到全部的 数据链路层头（MAC头） 的 16进制 代码啦！感兴趣的可以探索一下呢！
+                    <br></br>
+                    当整个帧的长度不足60字节时，会有填充字节加总长度补到60字节
+                    <br></br>
+                    再次点击click 转到接收方开始解包
+                    </Typography>
+            </Paper>
+            </Slide>
+
+
+
+
+
             {/* TCP/IP model */}
             <Grid container className={classes.animate}>
                  {props.data.isTcp?<TCPModel data={props.data} state={ready-100}></TCPModel>:<UDPModel data={props.data} state={ready-200}></UDPModel>}
@@ -219,7 +301,7 @@ export default function Show_new(props) {
             
             <Grid container xs={9} className={classes.senderAppl} direction="row-reverse" >
                 
-                <Fade in={ready >=1 && props.data.needAdd }>
+                <Fade in={ready >=320 && props.data.needAdd }>
                 <Paper elevation="3" className={classes.header}>
                 <MouseOverPopover color="#FFFFCC" data="Padding bytes" hoverData={"When the length of the frame is less than 60 bytes, we need to pad it to 60 bytes with padding bytes"}></MouseOverPopover>
                 </Paper>
