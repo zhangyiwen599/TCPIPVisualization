@@ -247,7 +247,9 @@ export default function Show_new(props) {
                     <Typography component="p">
                     Congratulations, the network layer header (IP header) is officially dismantled!
                     <br></br>
-                    The disassembled parameters will be displayed on the right side of the screen, and we will start the disassembly of the transmission layer!
+                    The disassembled parameters will be displayed on the right side of the screen,
+                    <br></br>
+                     and we will start the disassembly of the transmission layer!
                     </Typography>
             </Paper>
             </Slide>
@@ -266,7 +268,9 @@ export default function Show_new(props) {
                     <Typography component="p">
                     Congratulations, the data link layer header (MAC header) is officially dismantled!
                     <br></br>
-                    The disassembled parameters will be displayed on the right side of the screen, and we will start the disassembly of the network layer!
+                    The disassembled parameters will be displayed on the right side of the screen, 
+                    <br></br>
+                    and we will start the disassembly of the network layer!
                     </Typography>
             </Paper>
             </Slide>
@@ -291,7 +295,9 @@ export default function Show_new(props) {
                     Well, after a long physical layer transmission, our packet has reached the receiver!
                     <br>
                     </br>
-                    Here is the package we received. The right side of the screen is the parameter information we can get from the package. 
+                    Here is the package we received.
+                    <br></br>
+                     The right side of the screen is the parameter information we can get from the package. 
                     <br></br>
                     Click [click] to start the unpacking journey of the receiver!
                     </Typography>

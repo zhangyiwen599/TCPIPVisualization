@@ -243,9 +243,11 @@ export default function Show_new(props) {
                     <Typography component="p">
                     Congratulations, the transport layer header (TCP / UDP header) is officially filled! We will start filling the network layer! 
                     <br></br>
-                    In addition, you can hover over the transport layer header (TCP / UDP header) to see all the hexadecimal codes of the transport layer header (TCP / UDP header)! 
+                    In addition, you can hover over the transport layer header (TCP / UDP header) 
+                    
                     <br></br>
-                    Those who are interested can explore it!
+                    to see all the hexadecimal codes of the transport layer header (TCP / UDP header)! 
+                   
                     </Typography>
             </Paper>
             </Slide>
@@ -264,9 +266,10 @@ export default function Show_new(props) {
                         
                     Congratulations, the network layer header (IP header) is officially populated! We will start filling in the data link layer!
                     <br></br>
-                    In addition, you can hover over the network layer header (IP header) to see all the hexadecimal codes of the network layer header (IP header)! 
+                    In addition, you can hover over the network layer header (IP header)
                     <br></br>
-                    Those who are interested can explore it!
+                     to see all the hexadecimal codes of the network layer header (IP header)! 
+                   
                     </Typography>
             </Paper>
             </Slide>
@@ -285,7 +288,9 @@ export default function Show_new(props) {
                     <Typography component="p">
                     Congratulations, the data link layer header (MAC header) is officially populated! The sender's fill task is complete!
                     <br></br>
-                    In addition, mouse over the data link layer header (MAC header) to see all the hexadecimal codes of the data link layer header (MAC header)! Those who are interested can explore it!
+                    In addition, mouse over the data link layer header (MAC header)
+                    <br></br> 
+                    to see all the hexadecimal codes of the data link layer header (MAC header)! 
                     <br></br>
                     When the length of the entire frame is less than 60 bytes, there will be padding bytes added to the total length to 60 bytes
                     <br></br>
