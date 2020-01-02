@@ -90,7 +90,7 @@ export default function TCPButtons(props) {
         </Grid>
         <Grid item xs={12} sm={4}>
           <TextField
-            required
+            // required
             id="outlined-required"
             label="ACKNum "
             defaultValue={state.ACKNum}
@@ -102,7 +102,7 @@ export default function TCPButtons(props) {
         </Grid>
         <Grid item xs={12} sm={4}>
           <TextField
-            required
+            // required
             id="outlined-required"
             label="DataOffset"
             defaultValue={state.DataOffset}
@@ -230,7 +230,7 @@ export default function TCPButtons(props) {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
+            // required
             id="outlined-required"
             label="WindowSize"
             defaultValue={state.WindowSize}
@@ -242,7 +242,7 @@ export default function TCPButtons(props) {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
+            // required
             id="outlined-required"
             label="UrgantPointer"
             defaultValue={state.UrgantPointer}
