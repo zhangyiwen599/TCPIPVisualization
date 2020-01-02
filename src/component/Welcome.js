@@ -168,7 +168,7 @@ export default function Welcome(props) {
 
 
   const jumpToGithub = () => {
-    window.location.href = 'https://github.com/chong1144/network-demo';
+    window.location.href = 'https://github.com/chong1144/TCPIPVisualization';
   }
   return (
     <React.Fragment>
