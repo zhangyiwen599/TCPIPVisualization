@@ -217,9 +217,9 @@ export default function Show_new(props) {
             <Slide direction="up" in={ready==0} timeout={1000}>
             <Paper className={classes.introduceText} >
                     <Typography component="p">
-                    这就是我们的可视化界面啦。 屏幕右侧是你刚刚填写好的参数
+                    This is our visual interface. On the right side of the screen are the parameters you just filled out.
                     <br></br>
-                    下面的包是你填写的想要发送的内容，点击 click 让我们开始可视化的探索之旅吧！
+                    The following package is what you want to send, click [click] buttom and let's start the visual exploration journey!
                     </Typography>
             </Paper>
             </Slide>
@@ -227,9 +227,11 @@ export default function Show_new(props) {
             <Slide direction="up" in={ready>=1 && ready < 300} timeout={1000}>
             <Paper className={classes.introduceText} >
                     <Typography component="p">
-                    好啦让我们进入填写 传输层头(TCP/UDP头)的工作吧！ 点击 click 可以一个一个展示填充包的过程， 
+                    OK, let's get into the work of filling the transport layer header (TCP / UDP header)! 
                     <br></br>
-                    如果想要快进，就点击 skip 哟。 开始尽情探索吧！
+                    Click [click] to show the process of filling the package one by one, 
+                    <br></br>
+                    If you want to fast forward, click [skip]. Start exploring!
                     </Typography>
             </Paper>
             </Slide>
@@ -239,9 +241,11 @@ export default function Show_new(props) {
             <Slide direction="up" in={ready==300} timeout={1000}>
             <Paper className={classes.introduceText} >
                     <Typography component="p">
-                    Congratulations，传输层头(TCP/UDP头) 正式填充完成啦！我们会开始 网络层 的填充工作啦！ 
+                    Congratulations, the transport layer header (TCP / UDP header) is officially filled! We will start filling the network layer! 
                     <br></br>
-                    另外，在 传输层头(TCP/UDP头) 处鼠标悬浮就可以看到全部的 传输层头(TCP/UDP头) 的 16进制 代码啦！感兴趣的可以探索一下呢！
+                    In addition, you can hover over the transport layer header (TCP / UDP header) to see all the hexadecimal codes of the transport layer header (TCP / UDP header)! 
+                    <br></br>
+                    Those who are interested can explore it!
                     </Typography>
             </Paper>
             </Slide>
@@ -249,7 +253,7 @@ export default function Show_new(props) {
             <Slide direction="up" in={ready>300 && ready<315} timeout={1000}>
             <Paper className={classes.introduceText} >
                     <Typography component="p">
-                    现在进行网络层的填充工作
+                    Now fill the network layer
                     </Typography>
             </Paper>
             </Slide>
@@ -257,9 +261,12 @@ export default function Show_new(props) {
             <Slide direction="up" in={ready==315} timeout={1000}>
             <Paper className={classes.introduceText} >
                     <Typography component="p">
-                    Congratulations，网络层头（IP头） 正式填充完成啦！我们会开始 数据链路层 的填充工作啦！ 
+                        
+                    Congratulations, the network layer header (IP header) is officially populated! We will start filling in the data link layer!
                     <br></br>
-                    另外，在 网络层头（IP头） 处鼠标悬浮就可以看到全部的 网络层头（IP头） 的 16进制 代码啦！感兴趣的可以探索一下呢！
+                    In addition, you can hover over the network layer header (IP header) to see all the hexadecimal codes of the network layer header (IP header)! 
+                    <br></br>
+                    Those who are interested can explore it!
                     </Typography>
             </Paper>
             </Slide>
@@ -267,7 +274,7 @@ export default function Show_new(props) {
             <Slide direction="up" in={ready>315 && ready<320} timeout={1000}>
             <Paper className={classes.introduceText} >
                     <Typography component="p">
-                    现在进行数据链路层的填充工作
+                    Now fill the datalink layer
                     </Typography>
             </Paper>
             </Slide>
@@ -276,13 +283,13 @@ export default function Show_new(props) {
             <Slide direction="up" in={ready>=320} timeout={1000}>
             <Paper className={classes.introduceText} >
                     <Typography component="p">
-                    Congratulations，数据链路层头（MAC头） 正式填充完成啦！发送方的填充任务完成！ 
+                    Congratulations, the data link layer header (MAC header) is officially populated! The sender's fill task is complete!
                     <br></br>
-                    另外，在 数据链路层头（MAC头） 处鼠标悬浮就可以看到全部的 数据链路层头（MAC头） 的 16进制 代码啦！感兴趣的可以探索一下呢！
+                    In addition, mouse over the data link layer header (MAC header) to see all the hexadecimal codes of the data link layer header (MAC header)! Those who are interested can explore it!
                     <br></br>
-                    当整个帧的长度不足60字节时，会有填充字节加总长度补到60字节
+                    When the length of the entire frame is less than 60 bytes, there will be padding bytes added to the total length to 60 bytes
                     <br></br>
-                    再次点击click 转到接收方开始解包
+                    Click again to go to the receiver to start unpacking
                     </Typography>
             </Paper>
             </Slide>

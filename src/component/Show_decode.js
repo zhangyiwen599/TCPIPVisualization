@@ -224,10 +224,10 @@ export default function Show_new(props) {
             <Slide direction="up" in={ready==0} timeout={1000}>
             <Paper className={classes.introduceText} >
                     <Typography component="p">
-                    Congratulations，传输层头(TCP/UDP头) 正式拆解完成啦！
+                    Congratulations, the transport layer header (TCP / UDP header) is officially dismantled!
                     <br>
                     </br>
-                    我们的演示也到此为止了
+                    That's it for our demo
                     </Typography>
             </Paper>
             </Slide>
@@ -235,7 +235,7 @@ export default function Show_new(props) {
             <Slide direction="up" in={ready>=1 && ready < 300} timeout={1000}>
             <Paper className={classes.introduceText} >
                     <Typography component="p">
-                    现在开始进入拆解 传输层头(TCP/UDP头) 的过程 
+                    Now start the process of disassembling the transport layer header (TCP / UDP header)
                     </Typography>
             </Paper>
             </Slide>
@@ -245,9 +245,9 @@ export default function Show_new(props) {
             <Slide direction="up" in={ready==300} timeout={1000}>
             <Paper className={classes.introduceText} >
                     <Typography component="p">
-                    Congratulations，网络层头（IP头） 正式拆解完成啦！
+                    Congratulations, the network layer header (IP header) is officially dismantled!
                     <br></br>
-                    拆解出来的参数会显示在屏幕的右侧，我们会开始 传输层 的拆解工作啦！
+                    The disassembled parameters will be displayed on the right side of the screen, and we will start the disassembly of the transmission layer!
                     </Typography>
             </Paper>
             </Slide>
@@ -255,7 +255,7 @@ export default function Show_new(props) {
             <Slide direction="up" in={ready>300 && ready<315} timeout={1000}>
             <Paper className={classes.introduceText} >
                     <Typography component="p">
-                    现在开始进入拆解 网络层头（IP头）的过程 
+                    Now start the process of disassembling the network layer header (IP header)
 
                     </Typography>
             </Paper>
@@ -264,9 +264,9 @@ export default function Show_new(props) {
             <Slide direction="up" in={ready==315} timeout={1000}>
             <Paper className={classes.introduceText} >
                     <Typography component="p">
-                    Congratulations，数据链路层头（MAC头） 正式拆解完成啦！
+                    Congratulations, the data link layer header (MAC header) is officially dismantled!
                     <br></br>
-                    拆解出来的参数会显示在屏幕的右侧，我们会开始 网络层 的拆解工作啦！
+                    The disassembled parameters will be displayed on the right side of the screen, and we will start the disassembly of the network layer!
                     </Typography>
             </Paper>
             </Slide>
@@ -274,10 +274,12 @@ export default function Show_new(props) {
             <Slide direction="up" in={ready>315 && ready<320} timeout={1000}>
             <Paper className={classes.introduceText} >
                     <Typography component="p">
-                    好啦让我们进入拆解 数据链路层头（MAC头）的工作吧！ 
+                    OK, let's get into the work of tearing down the data link layer header (MAC header)!
                     <br>
                     </br>
-                    点击 click 可以一个一个展示读取并且拆解头的过程， 如果想要快进，就点击 skip 哟。 开始尽情探索吧！
+                    Click [click] to show the process of reading and disassembling the head one by one. 
+                    <br></br>
+                    If you want to fast forward, click [skip]. Start exploring!
                     </Typography>
             </Paper>
             </Slide>
@@ -286,10 +288,12 @@ export default function Show_new(props) {
             <Slide direction="up" in={ready>=320} timeout={1000}>
             <Paper className={classes.introduceText} >
                     <Typography component="p">
-                    好啦，经历了漫长的物理层的传输，我们的包达到了接收方的手里啦！
+                    Well, after a long physical layer transmission, our packet has reached the receiver!
                     <br>
                     </br>
-                    下面是我们收到的包哟，屏幕右侧是我们可以从包内获取的参数信息呢。 点击 click 让我们开始接收方的解包之旅吧！
+                    Here is the package we received. The right side of the screen is the parameter information we can get from the package. 
+                    <br></br>
+                    Click [click] to start the unpacking journey of the receiver!
                     </Typography>
             </Paper>
             </Slide>
