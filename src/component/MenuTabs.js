@@ -107,7 +107,7 @@ var resetReceiver
 var resetSender
 export default function MenuTabs() {
     const classes = useStyles();
-    const [value, setValue] = React.useState(2);
+    const [value, setValue] = React.useState(0);
     const sender = React.createRef();
     const receiver = React.createRef();
 

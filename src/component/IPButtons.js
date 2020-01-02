@@ -72,7 +72,7 @@ export default function IPButtons(props) {
         <Grid container spacing={1} className={classes.test} direction="row">
           <Grid item xs={12} sm={4} >
             <TextField
-              required
+              // required
               id="outlined-required"
               label="IHL"
               defaultValue={state.IHL}
@@ -84,7 +84,7 @@ export default function IPButtons(props) {
           </Grid>
           <Grid item xs={12} sm={4}>
             <TextField
-              required
+              // required
               id="outlined-required"
               label="DSCP"
               defaultValue={state.DSCP}
@@ -96,7 +96,7 @@ export default function IPButtons(props) {
           </Grid>
           <Grid item xs={12} sm={4}>
             <TextField
-              required
+              // required
               id="outlined-required"
               label="ECN"
               defaultValue={state.ECN}
@@ -108,7 +108,7 @@ export default function IPButtons(props) {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              required
+              // required
               id="outlined-required"
               label="Identification"
               defaultValue={state.Identification}
@@ -120,7 +120,7 @@ export default function IPButtons(props) {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              required
+              // required
               id="outlined-required"
               label="Flags"
               defaultValue={state.Flags}
@@ -132,7 +132,7 @@ export default function IPButtons(props) {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              required
+              // required
               id="outlined-required"
               label="FragmentOffset"
               defaultValue={state.FragmentOffset}
@@ -144,7 +144,7 @@ export default function IPButtons(props) {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              required
+              // required
               id="outlined-required"
               label="TTL"
               defaultValue={state.TTL}

@@ -78,33 +78,33 @@ export default function TCPButtons(props) {
       
         <Grid item xs={12} sm={4} >
           <TextField
-            required
+            // required
             id="outlined-required"
-            label="Seq Num"
+            label="SeqNum "
             defaultValue={state.SeqNum}
             className={classes.textField}
-            margin="normal"
-            variant="outlined"
+            margin="dense"
+            // variant="outlined"
             onChange={handleChange('SeqNum')}
           />
         </Grid>
         <Grid item xs={12} sm={4}>
           <TextField
-            required
+            // required
             id="outlined-required"
-            label="ACK Num"
+            label="ACKNum "
             defaultValue={state.ACKNum}
             className={classes.textField}
             margin="normal"
-            variant="outlined"
+            // variant="outlined"
             onChange={handleChange('ACKNum')}
           />
         </Grid>
         <Grid item xs={12} sm={4}>
           <TextField
-            required
+            // required
             id="outlined-required"
-            label="Data Offset"
+            label="DataOffset"
             defaultValue={state.DataOffset}
             className={classes.textField}
             margin="normal"
@@ -230,9 +230,9 @@ export default function TCPButtons(props) {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
+            // required
             id="outlined-required"
-            label="Window Size"
+            label="WindowSize"
             defaultValue={state.WindowSize}
             className={classes.textField}
             margin="normal"
@@ -242,9 +242,9 @@ export default function TCPButtons(props) {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
+            // required
             id="outlined-required"
-            label="Urgant pointer"
+            label="UrgantPointer"
             defaultValue={state.UrgantPointer}
             className={classes.textField}
             margin="normal"

@@ -227,10 +227,10 @@ export default function Welcome(props) {
             <Grid item xs={12} md={4} >
               <Paper elevation={0} className={classes.sidebarAboutBox}>
                 <Typography variant="h2" gutterBottom>
-                  Note
+                  By
                 </Typography>
                 <Typography variant="h5" >
-                Note that to get details of headers hover on it.
+                Yiwen Zhang and Sen Wang
                 </Typography>
               </Paper>
              
