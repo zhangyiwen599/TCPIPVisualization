@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
-
+import Swal from 'sweetalert2'
 var images = [
     {
         url: 'https://images.unsplash.com/photo-1486935964461-b5ac6a3e72cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60',
@@ -25,7 +25,11 @@ var images = [
         title: 'Surpport Us',
         width: '30%',
         fn: () => {
-            alert("No Camera");
+            Swal.fire({
+                imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0-Z96zRxi3ZuyqpV01TxSSIfFz07-6xqLNxzvHTCVsnZ-CPY4VQ&s',
+                // imageHeight: 1500,
+                // imageAlt: 'A tall image'
+            })
         }
     },
 ];
