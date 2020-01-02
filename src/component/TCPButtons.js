@@ -78,7 +78,7 @@ export default function TCPButtons(props) {
       
         <Grid item xs={12} sm={4} >
           <TextField
-            required
+            // required
             id="outlined-required"
             label="SeqNum "
             defaultValue={state.SeqNum}
