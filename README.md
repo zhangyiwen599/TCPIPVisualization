@@ -17,7 +17,7 @@
 
 <!-- /code_chunk_output -->
 
-
+## 具体的实现效果可以访问 [实现](http://39.97.241.72/)
 
 ## 总体架构
 总体上，我们这个软件是一个单页面网页。
@@ -45,27 +45,27 @@
 接收者页面是发送者从物理层到数据链路层、网络层、传输层的包的头部逐步解包的详细过程的动画展示。最终接受到发送方的信息。
 
 ## 页面间切换
-![menutabs](./img/MenuTabs.png)
+![menutabs](https://github.com/zhangyiwen599/TCPIPVisualization/raw/master/img/MenuTabs.png)
 
 效果图如上所示，当前展示的页面和本应用可以展示的子页面的相关信息。
 
 ## 欢迎界面
-![welcome](./img/welcome.png)
+![welcome](https://github.com/zhangyiwen599/TCPIPVisualization/raw/master/img/welcome.png)
 
 效果图如上图所示，点击 `Explore Now!` 进入基本配置输入界面， 点击 `Our GitHub` 展示我们这个项目的仓库。
 
 ## 输入界面
-![input](./img/input.png)
+![input](https://github.com/zhangyiwen599/TCPIPVisualization/raw/master/img/input.png)
 
 效果图如上所示，下方指示目前输入配置内容完成的阶段。
 
 
 ## 发送方界面
-![sender](./img/sender.png)
+![sender](https://github.com/zhangyiwen599/TCPIPVisualization/raw/master/img/sender.png)
 
 效果图如上图所示，界面的右方为之前输入的基本配置，中间为打包的过程和结果。
 
 ## 接收方界面
-![receiver](./img/receiver.png)
+![receiver](https://github.com/zhangyiwen599/TCPIPVisualization/raw/master/img/receiver.png)
 
 效果图如上图所示，中间为解包的过程和结果，界面的右方为结果得到的参数。
